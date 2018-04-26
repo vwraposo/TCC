@@ -20,6 +20,7 @@ for file in os.listdir(directory):
     data = open(filename, 'r')
     with open(filename, 'r') as f:
         for line in f:
+            line = line[:-1]
             line = line.split("#");
             mt_acc = line[0] 
             mt_desc = line[1] 
