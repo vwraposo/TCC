@@ -1,10 +1,10 @@
 ##################################################################################
 ##                                                                              ##
-##  Module that will have functions that recieve a type of mtDNA, get sequences ##
-## from the DB and return all data aligned (SeqRecord).                         ##         
+##   Module that will recieve a type (alias) of mtDNA, then get the sequences   ##
+##  from the database and returns the aligned sequences                         ##
 ##  It will work as a middleware for the program that generates the NEXUS file, ##
-## meaning when the user asks for a type of data the program will use this      ##
-## module to get the aligned sequences that will go to the NEXUS file           ##
+##  meaning when the user asks for a type of data the program call this         ##
+##  module to get the aligned sequences that will go to the NEXUS file          ##
 ##                                                                              ##
 ##################################################################################
 import psycopg2
@@ -38,6 +38,7 @@ def getAlignedSeq (alias):
         conn.rollback()
         print("Rollback complete")
 
+
     records = []
     for tup in cur:
         records.append(SeqRecord(Seq(tup[2], generic_dna), id=tup[0], description=tup[1]))
@@ -56,6 +57,8 @@ def getAlignedSeq (alias):
 
     in_file.close()
     out_file.close()
+    cur.close()
+    conn.close()
 
     return records
 
@@ -63,4 +66,5 @@ def getAlignedSeq (alias):
 records = getAlignedSeq("ND4")
 for rec in records:
     print(rec)
+    print()
 
