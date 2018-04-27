@@ -16,7 +16,7 @@ from subprocess import call
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.Alphabet import generic_dna
+from Bio.Alphabet import generic_dna, generic_protein
 
 def getAlignedSeq (alias):
     try:
@@ -26,7 +26,6 @@ def getAlignedSeq (alias):
         sys.exit(1)
 
     cur = conn.cursor()
-    # Fluxo: Construir arquivo fasta a apartir do DB, chamr clustalo, deletar arquivos FXSTXtry:
     try:
         cur.execute("SELECT * FROM mtdnas WHERE mt_alias = '{0}';".format(alias))
         if cur.rowcount == 0:
@@ -41,7 +40,7 @@ def getAlignedSeq (alias):
 
     records = []
     for tup in cur:
-        records.append(SeqRecord(Seq(tup[2], generic_dna), id=tup[0], description=tup[1]))
+        records.append(SeqRecord(Seq(tup[2], generic_dna), id=tup[0], name=tup[4], description=tup[1]))
 
     in_file = tempfile.NamedTemporaryFile()
     out_file = tempfile.NamedTemporaryFile()
@@ -53,6 +52,7 @@ def getAlignedSeq (alias):
 
     records = []
     for record in SeqIO.parse(out_file.name, "fasta"):
+        record.seq.alphabet = generic_dna
         records.append(record)
 
     in_file.close()
@@ -63,8 +63,8 @@ def getAlignedSeq (alias):
     return records
 
 
-records = getAlignedSeq("ND4")
-for rec in records:
-    print(rec)
-    print()
+# records = getAlignedSeq("ND4")
+# for rec in records:
+    # print(rec)
+    # print()
 
