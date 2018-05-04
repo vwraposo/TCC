@@ -28,16 +28,15 @@ end;
 
 
 
-## Problemas
-## - Pode dar override (Talvez nao seja problema)
-
 # TODO:
 ## - Inserir Mensagens de Erro
+## - Testes
 
 class NexusWriter:
 
     def __init__(self):
         self.dna = collections.OrderedDict() 
+        self.codon = collections.OrderedDict()
         self.standard = collections.OrderedDict() 
         self.binary = collections.OrderedDict() 
         self.taxa = set()
@@ -49,6 +48,8 @@ class NexusWriter:
         # Updating datastructures
         if datatype == 'DNA':
             dic = self.dna
+        elif datatype == 'Codon':
+            dic = self.codon
         elif datatype == 'Standard':
             dic = self.standard
         elif datatype == 'Binary':
@@ -83,7 +84,7 @@ class NexusWriter:
     # Function to convert the data matrix into string
     def _makeMatrix (self):
         m = []
-        for dic in [self.dna, self.standard, self.binary]:
+        for dic in [self.dna, self.codon, self.standard, self.binary]:
             for c in dic: 
                 for k in sorted(dic[c]):
                     m.append(k + ' ' + dic[c][k])
@@ -92,22 +93,25 @@ class NexusWriter:
 
     # Function to convert the format dictionary into string
     def _makeFormat (self):
-        f = []
+        f = dict()
         beg = 1
         end = 0
-        dics = [self.dna, self.standard, self.binary]
-        names = ['DNA', 'Standard', 'Binary']
+        dics = [self.dna, self.codon, self.standard, self.binary]
+        names = ['DNA', 'DNA', 'Standard', 'Binary']
         for i in range(len(dics)):
             if len(dics[i]) >= 1:
                 for ch in dics[i]:
                     end += self._getSeqLen(ch, dics[i])
-                f.append([names[i], beg, end])
+                if names[i] not in f:
+                    f[names[i]] = [beg, end]
+                else :
+                    f[names[i]][1] = end 
                 beg = end + 1
         out = []
         if len(f) == 1:
-            return f[0][0]
-        for it in f:
-            out.append(it[0] + ":" + str(it[1]) +'-'+ str(it[2]))
+            return list(f.items())[0][0]
+        for i in f:
+            out.append(i + ":" + str(f[i][0]) +'-'+ str(f[i][1]))
         return "mixed(" + ','.join(out) + ')'
         
     # Function to convert the partition dictionary into string
@@ -116,16 +120,22 @@ class NexusWriter:
         clist = [] 
         beg = 1
         end = 0
-        tot = 0
-        for dic in [self.dna, self.standard, self.binary]:
+        for dic in [self.dna, self.codon, self.standard, self.binary]:
             for cset in dic:
-                tot += 1
                 end += self._getSeqLen(cset, dic) 
-                s.append("\tcharset {0} = {1}-{2};".format(cset, beg, end))
-                clist.append(cset)
+                if dic == self.codon:
+                    s.append("\tcharset {0}_1st = {1}-{2}\\3;".format(cset, beg, end))
+                    clist.append(cset + '_1st')
+                    s.append("\tcharset {0}_2nd = {1}-{2}\\3;".format(cset, beg+1, end))
+                    clist.append(cset + '_2nd')
+                    s.append("\tcharset {0}_3rd = {1}-{2}\\3;".format(cset, beg+2, end))
+                    clist.append(cset + '_3rd')
+                else:
+                    s.append("\tcharset {0} = {1}-{2};".format(cset, beg, end))
+                    clist.append(cset)
                 beg = end + 1
 
-        s.append("\tpartition part = {0}: {1};".format(tot, ", ".join(clist)))
+        s.append("\tpartition part = {0}: {1};".format(len(clist), ", ".join(clist)))
         s.append("\tset partition = part;")
         return '\n'.join(s)
     
