@@ -6,6 +6,7 @@
 
 from string import Template
 import collections
+import sys
 
 data_template = Template("""#NEXUS
 
@@ -29,8 +30,8 @@ end;
 
 
 # TODO:
-## - Inserir Mensagens de Erro
 ## - Testes
+## - garante mesmo charset mesmo tamanho de string
 
 class NexusWriter:
 
@@ -46,6 +47,7 @@ class NexusWriter:
     # Function to add a new data entry, recieves a taxon, the type of data and the sequence. 
     def add (self, taxa, charset, datatype, seq):
         # Updating datastructures
+        self._checkSeq(seq, datatype)
         if datatype == 'DNA':
             dic = self.dna
         elif datatype == 'Codon':
@@ -55,12 +57,16 @@ class NexusWriter:
         elif datatype == 'Binary':
             dic = self.binary
         else:
-            print("Error")
+            print("Error: datatype not defined")
+            sys.exit(1)
 
         if charset not in dic:
             self.tchar += len(seq)
             dic[charset] = dict()
         self.taxa.add(taxa)
+        if (len(list(dic[charset].values())) > 0 and len(seq) != len(list(dic[charset].values())[0])):
+            print("Error: sequence of same charset with different lenghts")
+            sys.exit(1)
         dic[charset][taxa] = seq
 
     # Function that writes the nexus file
@@ -88,7 +94,7 @@ class NexusWriter:
             for c in dic: 
                 for k in sorted(dic[c]):
                     m.append(k + ' ' + dic[c][k])
-                m.append(" ")
+                m.append("")
         return '\n'.join(m)
 
     # Function to convert the format dictionary into string
@@ -146,13 +152,35 @@ class NexusWriter:
             c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(",".join(str(x) for x in list(range(1, len(self.dna) +1)))))
         c.append("\tunlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);")
         c.append("\tprset ratepr=variable;")
+        c.append("\tmcmc ngen=2000000 samplefreq=100;")
         return '\n'.join(c)
 
 
     def _getSeqLen(self, charset, dic):
         return len(list(dic[charset].values())[0])
 
+    def _checkSeq (self, seq, datatype):
+        error = False
+        if (datatype == 'DNA' or datatype == 'Codon'): 
+            for s in seq:
+                if (s.isdigit()):
+                    print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq, datatype))
+                    sys.exit(1)
+        elif datatype == 'Standard':
+            error = not seq.isdigit()
+            if error:
+                print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
+                sys.exit(1)
+        elif datatype == 'Binary':
+            for s in seq:
+                if (s != '0' and s != '1'):
+                    print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
+                    sys.exit(1)
+
+
+        return
 
 
 
-                 
+
+
