@@ -13,7 +13,7 @@ from Bio.SeqRecord import SeqRecord
 try:
     conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
 except:
-    print("It was not possible to connect to the database")
+    print("Error: It was not possible to connect to the database")
     sys.exit(1)
 
 cur = conn.cursor()
@@ -38,7 +38,7 @@ for file in os.listdir(directory):
                     mt_alias = s
                 break
         if mt_alias == '':
-            print("Error alias not found")
+            print("Error: alias not found")
             sys.exit(1)
         mt_seq = rec.seq
         sn_sp = mt_desc.split()[2]
