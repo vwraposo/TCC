@@ -29,10 +29,6 @@ end;
 
 
 
-# TODO:
-## - Testes
-## - garante mesmo charset mesmo tamanho de string
-
 class NexusWriter:
 
     def __init__(self):
@@ -58,7 +54,7 @@ class NexusWriter:
             dic = self.binary
         else:
             print("Error: datatype not defined")
-            sys.exit(1)
+            raise(Exception)
 
         if charset not in dic:
             self.tchar += len(seq)
@@ -66,7 +62,7 @@ class NexusWriter:
         self.taxa.add(taxa)
         if (len(list(dic[charset].values())) > 0 and len(seq) != len(list(dic[charset].values())[0])):
             print("Error: sequence of same charset with different lenghts")
-            sys.exit(1)
+            raise(Exception)
         dic[charset][taxa] = seq
 
     # Function that writes the nexus file
@@ -165,17 +161,17 @@ class NexusWriter:
             for s in seq:
                 if (s.isdigit()):
                     print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq, datatype))
-                    sys.exit(1)
+                    raise Exception
         elif datatype == 'Standard':
             error = not seq.isdigit()
             if error:
                 print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
-                sys.exit(1)
+                raise Exception
         elif datatype == 'Binary':
             for s in seq:
                 if (s != '0' and s != '1'):
                     print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
-                    sys.exit(1)
+                    raise Exception
 
 
         return

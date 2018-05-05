@@ -22,17 +22,16 @@ def getAlignedSeq (alias):
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
     except:
-        print("It was not possible to connect to the database")
+        print("Error: it was not possible to connect to the database")
         sys.exit(1)
 
     cur = conn.cursor()
     try:
         cur.execute("SELECT * FROM mtdnas WHERE mt_alias = '{0}';".format(alias))
         if cur.rowcount == 0:
-            print("No data with the alias: {0}".format(alias))
-            sys.exit(1)
+            print("Eror: no data with the alias: {0}".format(alias))
+            raise Exception
     except psycopg2.ProgrammingError as e:
-        print("Insert error")
         print(e)
         conn.rollback()
         print("Rollback complete")

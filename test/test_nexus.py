@@ -19,21 +19,21 @@ def test_add ():
 
 def test_addError():
     n = NexusWriter ()
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T1', 'c1', 'DNA', 'A12345')
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T1', 'c1', 'Codon', 'A12345')
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T1', 'c1', 'Standard', '123ABC45')
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T1', 'c1', 'Binary', '12345')
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T1', 'c1', 'Binary', 'ADVKLD')
 
 def test_sameLen ():
     n = NexusWriter ()
     n.add ('T1', 'c1', 'DNA', 'AGC')
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         n.add ('T2', 'c1', 'DNA', 'AGCAA')
 
 def test_makeMatrix ():
