@@ -41,7 +41,7 @@ class NexusWriter:
         # <charset> : <seq> #
 
     # Function to add a new data entry, recieves a taxon, the type of data and the sequence. 
-    def add (self, taxa, charset, datatype, seq):
+    def add (self, taxon, charset, datatype, seq):
         # Updating datastructures
         self._checkSeq(seq, datatype)
         if datatype == 'DNA':
@@ -59,11 +59,11 @@ class NexusWriter:
         if charset not in dic:
             self.tchar += len(seq)
             dic[charset] = dict()
-        self.taxa.add(taxa)
+        self.taxa.add(taxon)
         if (len(list(dic[charset].values())) > 0 and len(seq) != len(list(dic[charset].values())[0])):
             print("Error: sequence of same charset with different lenghts")
             raise(Exception)
-        dic[charset][taxa] = seq
+        dic[charset][taxon] = seq
 
     # Function that writes the nexus file
     def writeFile (self, outfile):
@@ -88,8 +88,8 @@ class NexusWriter:
         m = []
         for dic in [self.dna, self.codon, self.standard, self.binary]:
             for c in dic: 
-                for k in sorted(dic[c]):
-                    m.append(k + ' ' + dic[c][k])
+                for taxon in sorted(dic[c]):
+                    m.append(taxon + ' ' + dic[c][k])
                 m.append("")
         return '\n'.join(m)
 

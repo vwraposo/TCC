@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+
 ##################################################################################
 ##                                                                              ##
 ##   Module that lets a user choose the data from the database and then         ##
 ##   builds a nexus file that will be the input for MrBayes.                    ##
 ##                                                                              ##
 ##################################################################################
+
 import align as al
 from nexus import NexusWriter
 from Bio import SeqIO
@@ -48,6 +51,9 @@ class CreateInput(cmd.Cmd):
          pass
 
     def add(self, chset, datatype):
+        if (chset in self.selected and self.selected[chset] != False):
+            print("Error: charset '{0}' already selected".format(chset))
+            return
         # Recieves a charset and add to the Writer 
         try:
             records = al.getAlignedSeq(chset) 
