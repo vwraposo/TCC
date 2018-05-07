@@ -11,6 +11,6 @@ def test_answer ():
         assert isinstance(rec, SeqRecord)
 
 def test_error ():
-    with pytest.raises(SystemExit):
+    with pytest.raises(Exception):
         align.getAlignedSeq("S")
 
