@@ -1,4 +1,4 @@
-[ID: 6374079859]
+[ID: 8297724067]
 Parameter	Mean	Variance	CredInt_Lower	CredInt_Upper	Median	PSRF	Nruns
 length{all}[1]	7.793956e-02	5.974536e-05	6.339657e-02	9.364476e-02	7.772755e-02	9.999859e-01	2
 length{all}[2]	3.336966e-02	2.304521e-05	2.400292e-02	4.274045e-02	3.313645e-02	1.000068e+00	2
