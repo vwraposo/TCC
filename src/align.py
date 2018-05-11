@@ -18,7 +18,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import generic_dna, generic_protein
 
-def getAlignedSeq (alias):
+def getAlignedSeq(alias):
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
     except:

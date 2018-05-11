@@ -89,7 +89,7 @@ class NexusWriter:
         for dic in [self.dna, self.codon, self.standard, self.binary]:
             for c in dic: 
                 for taxon in sorted(dic[c]):
-                    m.append(taxon + ' ' + dic[c][k])
+                    m.append(taxon + ' ' + dic[c][taxon])
                 m.append("")
         return '\n'.join(m)
 

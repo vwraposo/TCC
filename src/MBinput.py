@@ -76,7 +76,7 @@ class CreateInput(cmd.Cmd):
             if arg == 'mtDNA':
                 datatype = 'DNA'
             for chset in self.charset[arg]: 
-                if selected[chset] != False:
+                if self.selected[chset] != False:
                     continue
                 records = al.getAlignedSeq(chset) 
                 self.selected[chset] = datatype
