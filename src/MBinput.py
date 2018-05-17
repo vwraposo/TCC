@@ -65,43 +65,49 @@ class CreateInput(cmd.Cmd):
             return
         # Recieves a charset and add to the Writer 
         try:
-            records = mw.getAlignedSeq(chset) 
+            if datatype == 'DNA':
+                records = mw.getAlignedSeq(chset) 
+            else:
+                records = mw.getStandard(chset) 
             self.selected[chset] = datatype
         except:
             return
         for rec in records:
             try:
-                self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
+                if datatype == 'DNA':
+                    self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
+                else:
+                    self.nwriter.add(rec, chset, datatype, "".join(records[rec]))
             except:
                 self.selected[chset] = False
                 return
         print("Success: charset '{0}' added".format(chset))
     
     # Adds all charsets from the given table to the nexus file
-    def do_add_all(self, args):
-        for arg in args.split(): 
-            if arg not in self.charset:
-                print("Error: table '{0}' not in the database".format(arg))
-                continue
-            if arg == 'mtDNA':
-                datatype = 'DNA'
-            for chset in self.charset[arg]: 
-                if self.selected[chset] != False:
-                    continue
-                records = mw.getAlignedSeq(chset) 
-                self.selected[chset] = datatype
-                error = 0
-                for rec in records:
-                    try:
-                        self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
-                    except:
-                        error = 1
-                        break
+    # def do_add_all(self, args):
+        # for arg in args.split(): 
+            # if arg not in self.charset:
+                # print("Error: table '{0}' not in the database".format(arg))
+                # continue
+            # if arg == 'mtDNA':
+                # datatype = 'DNA'
+            # for chset in self.charset[arg]: 
+                # if self.selected[chset] != False:
+                    # continue
+                # records = mw.getAlignedSeq(chset) 
+                # self.selected[chset] = datatype
+                # error = 0
+                # for rec in records:
+                    # try:
+                        # self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
+                    # except:
+                        # error = 1
+                        # break
 
-                if not error:
-                    print("Success: charset '{0}' added".format(chset))
-                else:
-                    print("Error: there was a probles while adding charset '{0}'".format(chset))
+                # if not error:
+                    # print("Success: charset '{0}' added".format(chset))
+                # else:
+                    # print("Error: there was a probles while adding charset '{0}'".format(chset))
 
 
 
@@ -111,22 +117,7 @@ class CreateInput(cmd.Cmd):
 
     def do_add_std(self, args):
         for arg in args.split():
-            chset = arg
-            if (chset in self.selected and self.selected[chset] != False):
-                print("Error: charset '{0}' already selected".format(chset))
-                return
-            try:
-                records = mw.getStandard(arg) 
-                self.selected[chset] = 'Standard'
-            except:
-                return
-            for rec in records:
-                try:
-                    self.nwriter.add(rec, chset, 'Standard', "".join(records[rec]))
-                except:
-                    self.selected[chset] = False
-                    return
-            print("Success: charset '{0}' added".format(chset))
+            self.add(arg, 'Standard')
 
     def do_add_bin(self, args):
         for arg in args.split():
