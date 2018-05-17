@@ -23,13 +23,13 @@ End;
 mb_template = Template("""begin mrbayes;
     $partition
 
-    set partition = part;
+        set partition = part;
 
     $code
 
-    unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
-    prset ratepr=variable;
-    mcmc ngen=2000000 samplefreq=100;
+        unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
+        prset ratepr=variable;
+        mcmc ngen=2000000 samplefreq=100;
 
 end;
 """)
@@ -68,6 +68,7 @@ class NexusWriter:
             self.tchar += len(seq)
             dic[charset] = dict()
         self.taxa.add(taxon)
+        
         if (len(list(dic[charset].values())) > 0 and len(seq) != len(list(dic[charset].values())[0])):
             print("Error: sequence of same charset with different lenghts")
             raise(Exception)
@@ -97,7 +98,7 @@ class NexusWriter:
         for dic in [self.dna, self.codon, self.standard, self.binary]:
             for c in dic: 
                 for taxon in sorted(dic[c]):
-                    m.append(taxon + ' ' + dic[c][taxon])
+                    m.append('\t' + taxon + ' ' + dic[c][taxon])
                 m.append("")
         return '\n'.join(m)
 
@@ -177,14 +178,12 @@ class NexusWriter:
         return len(list(dic[charset].values())[0])
 
     def _checkSeq (self, seq, datatype):
-        error = False
         if (datatype == 'DNA' or datatype == 'Codon'): 
             if (re.match('^[ACGTRYMKSWHBVDN?\-]+$', seq) == None):
                 print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq, datatype))
                 raise Exception
         elif datatype == 'Standard':
-            error = not seq.isdigit()
-            if error:
+            if not seq.isdigit():
                 print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
                 raise Exception
         elif datatype == 'Binary':
@@ -192,6 +191,9 @@ class NexusWriter:
                 if (s != '0' and s != '1'):
                     print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq[:5], datatype))
                     raise Exception
+        else:
+            print("Error: datatype not defined")
+            raise Exception
 
 
         return
