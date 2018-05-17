@@ -48,11 +48,14 @@ begin mrbayes;
 	charset cytb_2nd = 1838-2618\3;
 	charset cytb_3rd = 1839-2618\3;
 	partition part = 8: 16S, 12S, ND4_1st, ND4_2nd, ND4_3rd, cytb_1st, cytb_2nd, cytb_3rd;
-	set partition = part;
+
+        set partition = part;
 
     	lset applyto=(1,2) nst=mixed rates=invgamma;
-	unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
-	prset ratepr=variable;
-	mcmc ngen=2000000 samplefreq=100;
+	lset applyto=(3,4,5,6,7,8) nst=mixed rates=invgamma;
+
+        unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
+        prset ratepr=variable;
+        mcmc ngen=2000000 samplefreq=100;
 
 end;
