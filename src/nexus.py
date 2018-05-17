@@ -7,6 +7,7 @@
 from string import Template
 import collections
 import sys
+import re
 
 data_template = Template("""#NEXUS
 
@@ -167,7 +168,7 @@ class NexusWriter:
             c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(','.join(self._partition['codon'])))
 
         if len(self.standard) >= 1: 
-            c.append("\tlset applyto=({0})".format(','.join(self._partition['standard'])))
+            c.append("\tlset applyto=({0}) rates=gamma".format(','.join(self._partition['standard'])))
 
         return '\n'.join(c)
 
@@ -178,10 +179,9 @@ class NexusWriter:
     def _checkSeq (self, seq, datatype):
         error = False
         if (datatype == 'DNA' or datatype == 'Codon'): 
-            for s in seq:
-                if (s.isdigit()):
-                    print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq, datatype))
-                    raise Exception
+            if (re.match('^[ACGTRYMKSWHBVDN?\-]+$', seq) == None):
+                print("Error: sequence {0}... is not in accordance with datatype {1}".format(seq, datatype))
+                raise Exception
         elif datatype == 'Standard':
             error = not seq.isdigit()
             if error:
@@ -195,7 +195,5 @@ class NexusWriter:
 
 
         return
-
-
 
 
