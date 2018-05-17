@@ -1,10 +1,9 @@
 [
-  "test_align.py::test_answer",
-  "test_align.py::test_error",
   "test_nexus.py::test_add",
   "test_nexus.py::test_addError",
   "test_nexus.py::test_sameLen",
   "test_nexus.py::test_makeMatrix",
   "test_nexus.py::test_makeFormat",
+  "test_nexus.py::test_makePartition",
   "test_nexus.py::test_getSeqLen"
 ]

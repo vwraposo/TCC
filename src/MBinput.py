@@ -50,6 +50,7 @@ class CreateInput(cmd.Cmd):
     def emptyline(self):
          pass
 
+    # Adds a charset of the given datatype to the nexus file
     def add(self, chset, datatype):
         if (chset in self.selected and self.selected[chset] != False):
             print("Error: charset '{0}' already selected".format(chset))
@@ -67,11 +68,12 @@ class CreateInput(cmd.Cmd):
                 self.selected[chset] = False
                 return
         print("Success: charset '{0}' added".format(chset))
-
+    
+    # Adds all charsets from the given table to the nexus file
     def do_add_all(self, args):
         for arg in args.split(): 
             if arg not in self.charset:
-                print("Error: charset '{0}' not int the database".format(arg))
+                print("Error: table '{0}' not in the database".format(arg))
                 continue
             if arg == 'mtDNA':
                 datatype = 'DNA'

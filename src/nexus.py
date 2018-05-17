@@ -22,7 +22,13 @@ End;
 mb_template = Template("""begin mrbayes;
     $partition
 
+    set partition = part;
+
     $code
+
+    unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
+    prset ratepr=variable;
+    mcmc ngen=2000000 samplefreq=100;
 
 end;
 """)
@@ -36,6 +42,7 @@ class NexusWriter:
         self.codon = collections.OrderedDict()
         self.standard = collections.OrderedDict() 
         self.binary = collections.OrderedDict() 
+        self._partition = dict()
         self.taxa = set()
         self.tchar = 0
         # <charset> : <seq> #
@@ -122,33 +129,46 @@ class NexusWriter:
         clist = [] 
         beg = 1
         end = 0
-        for dic in [self.dna, self.codon, self.standard, self.binary]:
+        p_id = 1
+        for dic, name in zip([self.dna, self.codon, self.standard, self.binary], ['dna', 'codon', 'standard', 'binary']):
+            self._partition[name] = []
             for cset in dic:
                 end += self._getSeqLen(cset, dic) 
                 if dic == self.codon:
                     s.append("\tcharset {0}_1st = {1}-{2}\\3;".format(cset, beg, end))
                     clist.append(cset + '_1st')
+                    self._partition[name].append(str(p_id))
+                    p_id += 1
                     s.append("\tcharset {0}_2nd = {1}-{2}\\3;".format(cset, beg+1, end))
                     clist.append(cset + '_2nd')
+                    self._partition[name].append(str(p_id))
+                    p_id += 1
                     s.append("\tcharset {0}_3rd = {1}-{2}\\3;".format(cset, beg+2, end))
                     clist.append(cset + '_3rd')
+                    self._partition[name].append(str(p_id))
+                    p_id += 1
                 else:
                     s.append("\tcharset {0} = {1}-{2};".format(cset, beg, end))
                     clist.append(cset)
+                    self._partition[name].append(str(p_id))
+                    p_id += 1
                 beg = end + 1
 
         s.append("\tpartition part = {0}: {1};".format(len(clist), ", ".join(clist)))
-        s.append("\tset partition = part;")
         return '\n'.join(s)
     
     # Function to convert the partition dictionary into string
     def _makeCode (self):
         c = []
         if len(self.dna) >= 1:
-            c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(",".join(str(x) for x in list(range(1, len(self.dna) +1)))))
-        c.append("\tunlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);")
-        c.append("\tprset ratepr=variable;")
-        c.append("\tmcmc ngen=2000000 samplefreq=100;")
+            c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(','.join(self._partition['dna'])))
+
+        if len(self.codon) >= 1:
+            c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(','.join(self._partition['codon'])))
+
+        if len(self.standard) >= 1: 
+            c.append("\tlset applyto=({0})".format(','.join(self._partition['standard'])))
+
         return '\n'.join(c)
 
 
@@ -175,7 +195,6 @@ class NexusWriter:
 
 
         return
-
 
 
 

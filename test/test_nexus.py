@@ -51,6 +51,18 @@ def test_makeFormat ():
     n.add ('T1', 'c4', 'Standard', '047')
     assert n._makeFormat() == 'mixed(DNA:1-6,Standard:7-9)'
 
+def test_makePartition ():
+    n = NexusWriter ()
+    n.add ('T1', 'c1', 'DNA', 'AGC')
+    n.add ('T1', 'c3', 'Codon', 'AGC')
+    n.add ('T1', 'p', 'Standard', '01010')
+    n._makePartition ()
+    assert n._partition['dna'] == ['1']
+    assert n._partition['codon'] == ['2', '3', '4']
+    assert n._partition['standard'] == ['5']
+
+
+
 def test_getSeqLen():
     n = NexusWriter ()
     n.add ('T1', 'c1', 'DNA', 'AGC')
