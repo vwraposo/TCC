@@ -1,10 +1,8 @@
 ##################################################################################
 ##                                                                              ##
-##   Module that will recieve a type (alias) of mtDNA, then get the sequences   ##
-##  from the database and returns the aligned sequences                         ##
-##  It will work as a middleware for the program that generates the NEXUS file, ##
-##  meaning when the user asks for a type of data the program call this         ##
-##  module to get the aligned sequences that will go to the NEXUS file          ##
+##   Module that will work as a middleware for the program that generates       ##
+## the NEXUS file, meaning when the user asks for a type of data the program    ##
+## call this module to get the aligned sequences that will go to the NEXUS file ##
 ##                                                                              ##
 ##################################################################################
 import psycopg2
@@ -18,6 +16,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import generic_dna, generic_protein
 
+# Recieve a type (alias) of mtDNA, then get the sequences from the database and returns the aligned sequences  
 def getAlignedSeq(alias):
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
@@ -62,8 +61,56 @@ def getAlignedSeq(alias):
     return records
 
 
-# records = getAlignedSeq("ND4")
-# for rec in records:
-    # print(rec)
-    # print()
+def getStandard(chset):
+    if chset == 'protein':
+        return _getProteins()
+    else:
+        print("Error: charset not defined.")
+        raise Exception
+
+# Returns the proteic data from the database in a binary form 
+def _getProteins():
+    try:
+        conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
+    except:
+        print("Error: it was not possible to connect to the database")
+        sys.exit(1)
+
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT DISTINCT pr_acc FROM proteins;")
+        if cur.rowcount == 0:
+            print("Error: there are no proteins in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    proteins = [tup[0] for tup in cur]
+    try:
+        cur.execute("SELECT DISTINCT sn_sp, pr_acc FROM pr_sn;")
+        if cur.rowcount == 0:
+            print("Eror: there are no proteins in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    records = dict()
+    for tup in cur: 
+        if tup[0] not in records:
+            records[tup[0]] = [str(0)] * len(proteins)
+        records[tup[0]][proteins.index(tup[1])] = str(1)
+    
+    return records
+
+# Returns the peptidic data from the database in a binary form 
+# def getPeptides():
+
+
+
+
+
 
