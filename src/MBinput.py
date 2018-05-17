@@ -7,7 +7,7 @@
 ##                                                                              ##
 ##################################################################################
 
-import align as al
+import middleware as mw
 from nexus import NexusWriter
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -32,6 +32,8 @@ class CreateInput(cmd.Cmd):
             sys.exit(1)
 
         cur = conn.cursor()
+
+        ## mtDNA 
         self.charset['mtDNA'] = []
         try:
             cur.execute("SELECT DISTINCT mt_alias FROM mtdnas;")
@@ -45,6 +47,12 @@ class CreateInput(cmd.Cmd):
         
         cur.close()
         conn.close()
+
+        ## Standard
+        self.charset['Standard'] = ['protein', 'peptide']
+        self.selected['protein'] = False 
+        self.selected['peptide'] = False 
+
         self.do_list("")
     
     def emptyline(self):
@@ -57,7 +65,7 @@ class CreateInput(cmd.Cmd):
             return
         # Recieves a charset and add to the Writer 
         try:
-            records = al.getAlignedSeq(chset) 
+            records = mw.getAlignedSeq(chset) 
             self.selected[chset] = datatype
         except:
             return
@@ -80,25 +88,50 @@ class CreateInput(cmd.Cmd):
             for chset in self.charset[arg]: 
                 if self.selected[chset] != False:
                     continue
-                records = al.getAlignedSeq(chset) 
+                records = mw.getAlignedSeq(chset) 
                 self.selected[chset] = datatype
+                error = 0
                 for rec in records:
                     try:
                         self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
                     except:
+                        error = 1
                         break
+
+                if not error:
+                    print("Success: charset '{0}' added".format(chset))
+                else:
+                    print("Error: there was a probles while adding charset '{0}'".format(chset))
 
 
 
     def do_add_codon(self, args):
         for arg in args.split():
             self.add(arg, 'Codon')
+
     def do_add_std(self, args):
         for arg in args.split():
-            self.add(arg, 'Standard')
+            chset = arg
+            if (chset in self.selected and self.selected[chset] != False):
+                print("Error: charset '{0}' already selected".format(chset))
+                return
+            try:
+                records = mw.getStandard(arg) 
+                self.selected[chset] = 'Standard'
+            except:
+                return
+            for rec in records:
+                try:
+                    self.nwriter.add(rec, chset, 'Standard', "".join(records[rec]))
+                except:
+                    self.selected[chset] = False
+                    return
+            print("Success: charset '{0}' added".format(chset))
+
     def do_add_bin(self, args):
         for arg in args.split():
             self.add(arg, 'Binary')
+
     def do_add_dna(self, args):
         for arg in args.split():
             self.add(arg, 'DNA')
