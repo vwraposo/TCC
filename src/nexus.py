@@ -28,7 +28,7 @@ mb_template = Template("""begin mrbayes;
     $code
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
-        prset ratepr=variable;
+        prset applyto=(all) ratepr=variable;
         mcmc ngen=2000000 samplefreq=100;
 
 end;
@@ -169,7 +169,7 @@ class NexusWriter:
             c.append("\tlset applyto=({0}) nst=mixed rates=invgamma;".format(','.join(self._partition['codon'])))
 
         if len(self.standard) >= 1: 
-            c.append("\tlset applyto=({0}) rates=gamma".format(','.join(self._partition['standard'])))
+            c.append("\tlset applyto=({0}) rates=gamma;".format(','.join(self._partition['standard'])))
 
         return '\n'.join(c)
 
