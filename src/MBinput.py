@@ -82,32 +82,49 @@ class CreateInput(cmd.Cmd):
                 self.selected[chset] = False
                 return
         print("Success: charset '{0}' added".format(chset))
+
+
+    # Creates a new nwriter
+    def do_new (self, args):
+        self.nwriter = NexusWriter()
+        for i in self.selected:
+            self.selected[i] = False
+        print("Ready to create a new file.")
+        
     
     # Adds all charsets from the given table to the nexus file
-    # def do_add_all(self, args):
-        # for arg in args.split(): 
-            # if arg not in self.charset:
-                # print("Error: table '{0}' not in the database".format(arg))
-                # continue
-            # if arg == 'mtDNA':
-                # datatype = 'DNA'
-            # for chset in self.charset[arg]: 
-                # if self.selected[chset] != False:
-                    # continue
-                # records = mw.getAlignedSeq(chset) 
-                # self.selected[chset] = datatype
-                # error = 0
-                # for rec in records:
-                    # try:
-                        # self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
-                    # except:
-                        # error = 1
-                        # break
+    def do_add_all(self, args):
+        for arg in args.split(): 
+            if arg not in self.charset:
+                print("Error: table '{0}' not in the database".format(arg))
+                continue
+            if arg == 'mtDNA':
+                datatype = 'DNA'
+            else:
+                datatype = 'Standard'
+            for chset in self.charset[arg]: 
+                if self.selected[chset] != False:
+                    continue
+                if datatype == 'DNA':
+                    records = mw.getAlignedSeq(chset) 
+                else:
+                    records = mw.getStandard(chset) 
+                self.selected[chset] = datatype
+                error = 0
+                for rec in records:
+                    try:
+                        if datatype == 'DNA':
+                            self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
+                        else:
+                            self.nwriter.add(rec, chset, datatype, "".join(records[rec]))
+                    except:
+                        error = 1
+                        break
 
-                # if not error:
-                    # print("Success: charset '{0}' added".format(chset))
-                # else:
-                    # print("Error: there was a probles while adding charset '{0}'".format(chset))
+                if not error:
+                    print("Success: charset '{0}' added".format(chset))
+                else:
+                    print("Error: there was a probles while adding charset '{0}'".format(chset))
 
 
 
@@ -128,8 +145,12 @@ class CreateInput(cmd.Cmd):
             self.add(arg, 'DNA')
 
     def do_write (self, arg):
-        self.nwriter.writeFile(arg)
-        print ("Writing NEXUS file: " + arg)
+        try:
+            self.nwriter.writeFile(arg)
+            print ("Writing NEXUS file: " + arg)
+        except Exception as e:
+            print(e)
+            
 
     def do_list(self, args):
         out = []
@@ -145,6 +166,11 @@ class CreateInput(cmd.Cmd):
             if self.selected[ch] != False:
                 tmp = "* ({0})".format(self.selected[ch])
             out.append(" {0} {1}{2}|".format(ch, tmp, " " * (15 - len(ch) - len(tmp) -1)))
+        for ch in self.charset['Standard']:
+            tmp = ""
+            if self.selected[ch] != False:
+                tmp = "*"
+            out[self.charset['Standard'].index(ch) + 3] += " {0} {1}{2}|".format(ch, tmp, " " * (15 - len(ch) - len(tmp) -1))
         out.append('-' * (17 * len(self.charset)))
         out.append('* (<datatype>) - charset was selected as <datatype>')
         print('\n'.join(out))
