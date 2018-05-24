@@ -51,7 +51,8 @@ CREATE TABLE pep_pr (
   CONSTRAINT fk_pep FOREIGN KEY (pep_seq)
     REFERENCES peptides(pep_seq)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT pk_pep_pr UNIQUE (pr_acc, pep_seq)
 );
 
 CREATE TABlE pr_sn (
@@ -64,7 +65,8 @@ CREATE TABlE pr_sn (
   CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
     REFERENCES snakes(sn_sp)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT pk_pr_sn UNIQUE (pr_acc, sn_sp)
 );
 
 CREATE TABLE pep_sn (
@@ -77,5 +79,6 @@ CREATE TABLE pep_sn (
   CONSTRAINT fk_pep FOREIGN KEY (pep_seq)
     REFERENCES peptides(pep_seq)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT pk_pep_sn UNIQUE (pep_seq, sn_sp)
 );
