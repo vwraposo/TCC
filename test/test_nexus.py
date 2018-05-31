@@ -41,7 +41,8 @@ def test_makeMatrix ():
     n.add ('T1', 'c1', 'DNA', 'AGC')
     n.add ('T1', 'c2', 'Codon', '?AGC')
     n.add ('T1', 'c3', 'Standard', '047')
-    assert n._makeMatrix() == 'T1 AGC\n\nT1 ?AGC\n\nT1 047\n'
+    print(n._makeMatrix())
+    assert n._makeMatrix() == '\tT1 AGC\n\n\tT1 ?AGC\n\n\tT1 047\n'
 
 def test_makeFormat ():
     n = NexusWriter ()

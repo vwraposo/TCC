@@ -1,1 +1,4 @@
-{}
+{
+  "test_align.py": true,
+  "test_middleware.py::test_getProtein": true
+}
