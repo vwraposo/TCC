@@ -61,15 +61,23 @@ def getAlignedSeq(alias):
     return records
 
 
-def getStandard(chset):
+def getStandard(chset, typ=''):
     if chset == 'protein':
-        return _getProteins()
+        return _getProteins(typ)
     else:
         print("Error: charset not defined.")
         raise Exception
 
-# Returns the proteic data from the database in a binary form 
-def _getProteins():
+# Returns the proteic data from the database in a standard form 
+def _getProteins(typ):
+    if typ == 'Total':
+        where = 'WHERE pr_T = 1' 
+    elif typ == 'Lectins':
+        where = ''
+    else:
+        print("Error: protein type not defined.")
+        raise Exception
+
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
     except:
@@ -78,7 +86,7 @@ def _getProteins():
 
     cur = conn.cursor()
     try:
-        cur.execute("SELECT DISTINCT pr_acc FROM proteins;")
+        cur.execute("SELECT DISTINCT pr_acc FROM proteins {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are no proteins in the database.")
             raise Exception
@@ -87,9 +95,14 @@ def _getProteins():
         conn.rollback()
         print("Rollback complete")
 
+    if typ == 'Total':
+        where = 'AND pr_T = 1' 
+    elif typ == 'Lectins':
+        where = ''
+
     proteins = [tup[0] for tup in cur]
     try:
-        cur.execute("SELECT DISTINCT sn_sp, pr_acc FROM pr_sn;")
+        cur.execute("SELECT DISTINCT * FROM pr_sn, proteins WHERE pr_sn.pr_acc = proteins.pr_acc {0};".format(where))
         if cur.rowcount == 0:
             print("Eror: there are no proteins in the database.")
             raise Exception
@@ -101,8 +114,12 @@ def _getProteins():
     records = dict()
     for tup in cur: 
         if tup[0] not in records:
-            records[tup[0]] = [str(0)] * len(proteins)
-        records[tup[0]][proteins.index(tup[1])] = str(1)
+            records[tup[0]] = [str(0)] * len(proteins)  
+
+        summ = 1
+        if typ == 'Lectins':
+            summ = sum(tup[4:])
+        records[tup[0]][proteins.index(tup[1])] = str(summ)
     
     return records
 
