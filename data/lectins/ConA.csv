@@ -1,4 +1,4 @@
-Venom;Protein name;Accession number*;m/z;z;Mascot score;Toxin class;Peptides**;Peptide Identification Probability;Putative N-glycosylation site*** ;Putative O-glycosylation site****
+Venom;Protein name;Accession number;m/z;z;Mascot score;Toxin class;Peptides**;Peptide Identification Probability;Putative N-glycosylation site*** ;Putative O-glycosylation site****
 B. cotiara;BJAR454LAO1;BJAR454LAO1;431,8741;3;38,7;LAAO;HDDIFAYEKR;0,977;N190,N379;S165,S314,S328, S502
 ;;;438,6977;2;46,7;;STTDLPSR;0,963;;
 ;;;573,3208;2;53,4;;IKFEPPLSSK;0,997;;

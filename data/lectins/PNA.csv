@@ -1,4 +1,4 @@
-Venom;Protein name;Accession number*;Toxin class;m/z;z;Mascot score;Peptides**;Peptide Identification Probability;Putative N-glycosylation site***;Putative O-glycosylation site***
+Venom;Protein name;Accession number;Toxin class;m/z;z;Mascot score;Peptides**;Peptide Identification Probability;Putative N-glycosylation site***;Putative O-glycosylation site***
 B. cotiara;Basic phospholipase A2 bothropstoxin-2 OS=Bothrops jararacussu PE=1 SV=1;PA2B2_BOTJR;PL;753,3;2;52,5;ccFVHDccYGK;0,997;No;No
 ;;;;832,3;2;81,7;ENGVIIcGEGTPcEK;0,997;;
 ;;;;864,74;2;52,1;QIcEcDKAAAVcFR;0,995;;
