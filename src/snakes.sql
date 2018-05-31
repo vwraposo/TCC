@@ -38,6 +38,10 @@ CREATE TABLE peptides (
 CREATE TABLE proteins (
   pr_acc varchar(100), 
   pr_toxclass varchar(100), 
+  pr_T integer DEFAULT 0, 
+  pr_WGA integer DEFAULT 0, 
+  pr_ConA integer DEFAULT 0, 
+  pr_PNA integer DEFAULT 0, 
   CONSTRAINT pk_pr PRIMARY KEY (pr_acc)
 );
 
