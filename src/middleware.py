@@ -61,9 +61,11 @@ def getAlignedSeq(alias):
     return records
 
 
-def getStandard(chset, typ=''):
+def getStandard(chset):
     if chset == 'protein':
-        return _getProteins(typ)
+        return _getProteins('Total')
+    elif chset == 'lec_protein':
+        return _getProteins('Lectins') 
     else:
         print("Error: charset not defined.")
         raise Exception

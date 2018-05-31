@@ -49,9 +49,9 @@ class CreateInput(cmd.Cmd):
         conn.close()
 
         ## Standard
-        self.charset['Standard'] = ['protein', 'peptide']
+        self.charset['Standard'] = ['protein', 'lec_protein']
         self.selected['protein'] = False 
-        self.selected['peptide'] = False 
+        self.selected['lec_protein'] = False 
 
         self.do_list("")
     
@@ -65,7 +65,7 @@ class CreateInput(cmd.Cmd):
             return
         # Recieves a charset and add to the Writer 
         try:
-            if datatype == 'DNA':
+            if datatype == 'DNA' or datatype == 'Codon':
                 records = mw.getAlignedSeq(chset) 
             else:
                 records = mw.getStandard(chset) 
@@ -74,7 +74,7 @@ class CreateInput(cmd.Cmd):
             return
         for rec in records:
             try:
-                if datatype == 'DNA':
+                if datatype == 'DNA' or datatype == 'Codon':
                     self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
                 else:
                     self.nwriter.add(rec, chset, datatype, "".join(records[rec]))
@@ -135,10 +135,6 @@ class CreateInput(cmd.Cmd):
     def do_add_std(self, args):
         for arg in args.split():
             self.add(arg, 'Standard')
-
-    def do_add_bin(self, args):
-        for arg in args.split():
-            self.add(arg, 'Binary')
 
     def do_add_dna(self, args):
         for arg in args.split():
