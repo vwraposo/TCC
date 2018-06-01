@@ -1,4 +1,4 @@
-Venom;Protein name;Accession number;m/z;z;Mascot score;Toxin class;Peptides**;Peptide Identification Probability;Putative N-glycosylation site*** ;Putative O-glycosylation site****
+Venom;Protein name;Accession number;m/z;z;Mascot score;Toxin class;Peptides;Peptide Identification Probability;Putative N-glycosylation site*** ;Putative O-glycosylation site****
 B. cotiara;BJAR454LAO1;BJAR454LAO1;431,8741;3;38,7;LAAO;HDDIFAYEKR;0,977;N190,N379;S165,S314,S328, S502
 ;;;438,6977;2;46,7;;STTDLPSR;0,963;;
 ;;;573,3208;2;53,4;;IKFEPPLSSK;0,997;;
@@ -2811,10 +2811,3 @@ B. neuwiedi;BJAR454CRISP1;BJAR454CRISP1, F2Q6G1_DEIAC;636,02;3;69;OT;KPEIQNEIVDL
 ;;;753,3842;2;79,1;;SVANDDEVIRYPK;0,997;;
 ;;;753,56;2;48,2;;SVANDDEVIRYPK;0,98;;
 ;;;;;;;;;;
-"CTL: C-type lectin; LAAO: L-amino acid oxidase; OT: other; PL: phospholipase; SVMP: snake venom metalloproteinase; SVSP: snake venom serine proteinase.";;;;;;;;;;
-;;;;;;;;;;
-;;;;;;;;;;
-*Accession numbers according to Uniprot.;;;;;;;;;;
-**For details on peptide identification and validation see the Experimental Procedures section.;;;;;;;;;;
-"***According to NetNGlyc at www.expasy.org; putative N- glycosylation sites were considered as such if they crossed the default threshold of 0.5 and thus represent a predicted glycosylated site.";;;;;;;;;;
-"****According to NetOGlyc at www.expasy.org; putative O-glycosylation sites were considered as such if they resulted from prediction scores higher than 0.5.";;;;;;;;;;

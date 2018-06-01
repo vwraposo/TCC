@@ -2238,10 +2238,3 @@ B. neuwiedi;BJAR4545NUCL1;BJAR4545NUCL1;519,2706;3;106;OT;IIALGHSGFLEDQR;0,997;N
 ;;;977,5112;2;74,7;;YLISHTPQcILNEPLR;0,997;;
 ;;;1022,99;2;78,2;;LTPGAQcAEGLccYQcR;0,997;;
 ;;;;;;;;;;
-"CTT: C-type lectin; LAAO: L-amino acid oxidase; OT: other; PL: phospholipase; SVMP: snake venom metalloproteinase; SVSP: snake venom serine proteinase.";;;;;;;;;;
-;;;;;;;;;;
-;;;;;;;;;;
-*Accession numbers according to Uniprot.;;;;;;;;;;
-**For details on peptide identification and validation see the Experimental Procedures section.;;;;;;;;;;
-"***According to NetNGlyc at www.expasy.org; putative N- glycosylation sites were considered as such if they crossed the default threshold of 0.5 and thus represent a predicted glycosylated site.";;;;;;;;;;
-"****According to NetOGlyc at www.expasy.org; putative O-glycosylation sites were considered as such if they resulted from prediction scores higher than 0.5.";;;;;;;;;;
