@@ -88,28 +88,58 @@ for file in os.listdir(directory):
         protein = ''
         count = 0
         for row in reader:
+            if row['Venom'] != '':
+                species = row['Venom'].split()[1]
             if row['Accession number'] != '' and row['Toxin class'] != '':
                 protein = row['Accession number']
                 toxclass = row['Toxin class']
                 for pr in protein.split(','):
                     pr = pr.strip()
-                    count += 1
                     try:
-                        cur.execute("INSERT INTO proteins(pr_acc, pr_toxclass) VALUES ('{1}', '{2}')\
-                                ON CONFLICT DO NOTHING; \
-                                UPDATE proteins SET pr_{0} = 1 WHERE pr_acc = '{1}';".format(lectin, pr, toxclass))
+                        cur.execute("SELECT * FROM proteins WHERE pr_acc = '{0}';".format(pr))
                     except psycopg2.ProgrammingError as e:
-                        print("Insert error")
                         print(e)
                         conn.rollback()
                         print("Rollback complete")
-
                     conn.commit()
-        print("NUMBER OF PROTEINS: " + str(count))
+                    if cur.rowcount == 0:
+                        try:
+                            cur.execute("INSERT INTO proteins(pr_acc, pr_toxclass, pr_{0}) VALUES ('{1}', '{2}', 1)\
+                            ON CONFLICT DO NOTHING;".format(lectin, pr, toxclass))
+                            cur.execute("INSERT INTO pr_sn(pr_acc, sn_sp) VALUES ('{0}', '{1}')\
+                            ON CONFLICT DO NOTHING;".format(pr, species))
+                        except psycopg2.ProgrammingError as e:
+                            print("Insert error")
+                            print(e)
+                            conn.rollback()
+                            print("Rollback complete")
+                        conn.commit()
+                    else: 
+                        try:
+                            cur.execute("UPDATE proteins SET pr_{0} = 1 WHERE pr_acc = '{1}';".format(lectin, pr))
+                        except psycopg2.ProgrammingError as e:
+                            print("Insert error")
+                            print(e)
+                            conn.rollback()
+                            print("Rollback complete")
+                        conn.commit()
 
-
-                    
-
+            peptide = row['Peptides']
+            for pr in protein.split(','):
+                pr = pr.strip()
+                try:
+                    cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
+                            ON CONFLICT DO NOTHING;".format(peptide))
+                    cur.execute("INSERT INTO pep_sn(pep_seq, sn_sp) VALUES ('{0}', '{1}')\
+                            ON CONFLICT DO NOTHING;".format(peptide, species))
+                    cur.execute("INSERT INTO pep_pr(pep_seq, pr_acc) VALUES ('{0}', '{1}') \
+                            ON CONFLICT DO NOTHING;".format(peptide, pr))
+                except psycopg2.ProgrammingError as e:
+                    print("Insert error")
+                    print(e)
+                    conn.rollback()
+                    print("Rollback complete")
+                conn.commit()
 
 cur.close()
 conn.close()

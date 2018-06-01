@@ -97,12 +97,13 @@ def _getProteins(typ):
         conn.rollback()
         print("Rollback complete")
 
+    proteins = [tup[0] for tup in cur]
+
     if typ == 'Total':
         where = 'AND pr_T = 1' 
     elif typ == 'Lectins':
         where = ''
 
-    proteins = [tup[0] for tup in cur]
     try:
         cur.execute("SELECT DISTINCT * FROM pr_sn, proteins WHERE pr_sn.pr_acc = proteins.pr_acc {0};".format(where))
         if cur.rowcount == 0:
