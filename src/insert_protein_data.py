@@ -40,11 +40,33 @@ for file in os.listdir(directory):
                 toxclass = row['Toxin Class']
 
                 # New Protein 
+                for pr in protein.split(','):
+                    pr = pr.strip()
+
+                    try:
+                        cur.execute("INSERT INTO proteins(pr_acc, pr_toxclass, pr_T) VALUES ('{0}', '{1}', 1)\
+                                ON CONFLICT DO NOTHING;".format(pr, toxclass))
+                        cur.execute("INSERT INTO pr_sn(pr_acc, sn_sp) VALUES ('{0}', '{1}')\
+                                ON CONFLICT DO NOTHING;".format(pr, species))
+                    except psycopg2.ProgrammingError as e:
+                        print("Insert error")
+                        print(e)
+                        conn.rollback()
+                        print("Rollback complete")
+
+                    conn.commit()
+
+             # Add Peptide
+            peptide = row['Peptides']
+            for pr in protein.split(','):
+                pr = pr.strip()
                 try:
-                    cur.execute("INSERT INTO proteins(pr_acc, pr_toxclass, pr_T) VALUES ('{0}', '{1}', 1)\
-                            ON CONFLICT DO NOTHING;".format(protein, toxclass))
-                    cur.execute("INSERT INTO pr_sn(pr_acc, sn_sp) VALUES ('{0}', '{1}')\
-                            ON CONFLICT DO NOTHING;".format(protein, species))
+                    cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
+                            ON CONFLICT DO NOTHING;".format(peptide))
+                    cur.execute("INSERT INTO pep_sn(pep_seq, sn_sp) VALUES ('{0}', '{1}')\
+                            ON CONFLICT DO NOTHING;".format(peptide, species))
+                    cur.execute("INSERT INTO pep_pr(pep_seq, pr_acc) VALUES ('{0}', '{1}') \
+                            ON CONFLICT DO NOTHING;".format(peptide, pr))
                 except psycopg2.ProgrammingError as e:
                     print("Insert error")
                     print(e)
@@ -52,23 +74,6 @@ for file in os.listdir(directory):
                     print("Rollback complete")
 
                 conn.commit()
-
-             # Add Peptide
-            peptide = row['Peptides']
-            try:
-                cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
-                        ON CONFLICT DO NOTHING;".format(peptide))
-                cur.execute("INSERT INTO pep_sn(pep_seq, sn_sp) VALUES ('{0}', '{1}')\
-                        ON CONFLICT DO NOTHING;".format(peptide, species))
-                cur.execute("INSERT INTO pep_pr(pep_seq, pr_acc) VALUES ('{0}', '{1}') \
-                        ON CONFLICT DO NOTHING;".format(peptide, protein))
-            except psycopg2.ProgrammingError as e:
-                print("Insert error")
-                print(e)
-                conn.rollback()
-                print("Rollback complete")
-
-            conn.commit()
 
 
 ## Lectins
