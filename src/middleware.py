@@ -63,18 +63,22 @@ def getAlignedSeq(alias):
 
 def getStandard(chset):
     if chset == 'protein':
-        return _getProteins('Total')
+        return _getProteins('T')
     elif chset == 'lec_protein':
-        return _getProteins('Lectins') 
+        return _getProteins('L') 
+    elif chset == 'all_protein':
+        return _getProteins('TL') 
     else:
         print("Error: charset not defined.")
         raise Exception
 
 # Returns the proteic data from the database in a standard form 
 def _getProteins(typ):
-    if typ == 'Total':
+    if typ == 'T':
         where = 'WHERE pr_T = 1' 
-    elif typ == 'Lectins':
+    elif typ == 'L':
+        where = 'WHERE pr_WGA = 1 OR pr_ConA = 1 OR pr_PNA = 1'
+    elif typ == 'TL':
         where = ''
     else:
         print("Error: protein type not defined.")
@@ -99,10 +103,13 @@ def _getProteins(typ):
 
     proteins = [tup[0] for tup in cur]
 
-    if typ == 'Total':
+    if typ == 'T':
         where = 'AND pr_T = 1' 
-    elif typ == 'Lectins':
+    elif typ == 'L':
+        where = 'AND (pr_WGA = 1 OR pr_ConA = 1 OR pr_PNA = 1)'
+    elif typ == 'TL':
         where = ''
+
 
     try:
         cur.execute("SELECT DISTINCT * FROM pr_sn, proteins WHERE pr_sn.pr_acc = proteins.pr_acc {0};".format(where))
@@ -120,7 +127,7 @@ def _getProteins(typ):
             records[tup[0]] = [str(0)] * len(proteins)  
 
         summ = 1
-        if typ == 'Lectins':
+        if typ == 'L' or typ == 'TL':
             summ = sum(tup[4:])
         records[tup[0]][proteins.index(tup[1])] = str(summ)
     

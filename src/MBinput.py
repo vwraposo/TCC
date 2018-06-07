@@ -49,9 +49,10 @@ class CreateInput(cmd.Cmd):
         conn.close()
 
         ## Standard
-        self.charset['Standard'] = ['protein', 'lec_protein']
+        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein']
         self.selected['protein'] = False 
         self.selected['lec_protein'] = False 
+        self.selected['all_protein'] = False 
 
         self.do_list("")
     
@@ -156,7 +157,6 @@ class CreateInput(cmd.Cmd):
             s = s + " {0}{1}|".format(typ, " "* (15 - len(typ)))
         out.append(s)
         out.append('-' * (17 * len(self.charset)))
-        ## ARRUMAR QUANDO TIVER MAIS TIPO DE DADO 
         for ch in self.charset['mtDNA']:
             tmp = ""
             if self.selected[ch] != False:
