@@ -19,12 +19,17 @@ def test_getProteinError():
         mw._getProteins('NotDef')
        
 def test_getProteins():
-    records = mw._getProteins('Total')
+    records = mw._getProteins('T')
     assert len(records) == 7
     for rec in records:
         for i in records[rec]:
             assert (i == '0' or i == '1')
-    records = mw._getProteins('Lectins')
+    records = mw._getProteins('L')
+    assert len(records) == 7
+    for rec in records:
+        for i in records[rec]:
+            assert (i == '0' or i == '1' or i == '2' or i == '3' or i == '4')
+    records = mw._getProteins('TL')
     assert len(records) == 7
     for rec in records:
         for i in records[rec]:
