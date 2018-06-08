@@ -25,13 +25,11 @@ except psycopg2.ProgrammingError as e:
     conn.rollback()
     print("Rollback complete")
 
-pid = 0
 records = []
 for tup in cur:
-    records.append(SeqRecord(Seq(tup[0], generic_protein), id="p{0}".format(str(pid).zfill(4)), name='', description=''))
-    pid += 1
+    records.append(SeqRecord(Seq(tup[1], generic_protein), id="{0}".format(str(tup[0])), name='', description=''))
 
-SeqIO.write(records, '../data/peptides.faa', "fasta")
+SeqIO.write(records, '../data/blast/peptides.faa', "fasta")
 
 cur.close()
 conn.close()
