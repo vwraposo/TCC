@@ -70,6 +70,8 @@ def getStandard(chset):
         return _getProteins('L') 
     elif chset == 'all_protein':
         return _getProteins('TL') 
+    elif chset == 'peptides':
+        return _getPeptides()
     else:
         print("Error: charset not defined.")
         raise Exception
@@ -138,8 +140,11 @@ def _getProteins(typ):
     return records
 
 # Returns the proteic data from the database in a binary form 
-def getPeptides():
+def _getPeptides():
     MAX_DIFF = 2
+    MAX_HITS = 5
+    MIN_SCORE = 20 
+    MIN_EVALUE = 1e-05
 
 
     try:
@@ -167,7 +172,7 @@ def getPeptides():
     uf = UnionFind(n_pep)
     
     out_file = tempfile.NamedTemporaryFile()
-    blastp_cline = NcbiblastpCommandline(query="../data/blast/peptides.faa", db="../data/blast/db/blast/peptides", num_threads = 3, outfmt=5, out=out_file.name)
+    blastp_cline = NcbiblastpCommandline(query="../data/blast/peptides.faa", db="../data/blast/db/blast/peptides", evalue=MIN_EVALUE, threshold=MIN_SCORE, max_target_seqs=MAX_HITS, num_threads = 3, outfmt=5, out=out_file.name)
     print("BLAST started....")
     blastp_cline()
     print("BLAST completed.")
@@ -183,6 +188,7 @@ def getPeptides():
             len_r = al.length
             if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
                 uf.union (dic[pid_t], dic[pid_r])
+                break
 
 
     peptides = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
@@ -203,7 +209,7 @@ def getPeptides():
             records[tup[1]] = [str(0)] * len(peptides)  
         
         f = dicI[uf.find(dic[tup[0]])]
-        records[tup[1]][peptides.index(f)] = 1
+        records[tup[1]][peptides.index(f)] = str(1)
 
     out_file.close()
     cur.close()
