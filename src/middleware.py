@@ -6,15 +6,17 @@
 ##                                                                              ##
 ##################################################################################
 import psycopg2
-from subprocess import call
 import sys
 import tempfile 
-from Bio.Align.Applications import ClustalOmegaCommandline
-from subprocess import call
+from UF import UnionFind 
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import generic_dna, generic_protein
+from Bio.Align.Applications import ClustalOmegaCommandline
+from Bio.Blast.Applications import NcbiblastpCommandline
+from Bio.Blast import NCBIXML
+
 
 # Recieve a type (alias) of mtDNA, then get the sequences from the database and returns the aligned sequences  
 def getAlignedSeq(alias):
@@ -114,7 +116,7 @@ def _getProteins(typ):
     try:
         cur.execute("SELECT DISTINCT * FROM pr_sn, proteins WHERE pr_sn.pr_acc = proteins.pr_acc {0};".format(where))
         if cur.rowcount == 0:
-            print("Eror: there are no proteins in the database.")
+            print("Eror: there are no proteins related to species in the database.")
             raise Exception
     except psycopg2.ProgrammingError as e:
         print(e)
@@ -130,14 +132,81 @@ def _getProteins(typ):
         if typ == 'L' or typ == 'TL':
             summ = sum(tup[4:])
         records[tup[0]][proteins.index(tup[1])] = str(summ)
-    
+
+    cur.close()
+    conn.close()
     return records
 
-# Returns the peptidic data from the database in a binary form 
-# def getPeptides():
+# Returns the proteic data from the database in a binary form 
+def getPeptides():
+    MAX_DIFF = 2
 
 
+    try:
+        conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
+    except:
+        print("Error: it was not possible to connect to the database")
+        sys.exit(1)
+    cur = conn.cursor()
+
+    try:
+        cur.execute("SELECT DISTINCT pep_id FROM peptides;")
+        if cur.rowcount == 0:
+            print("Error: there are no peptides in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    peptides = [tup[0] for tup in cur]
+    n_pep = len(peptides)
+    dic = dict(zip(peptides, range(n_pep)))
+    dicI = dict(zip(range(n_pep), peptides))
+    
+    uf = UnionFind(n_pep)
+    
+    out_file = tempfile.NamedTemporaryFile()
+    blastp_cline = NcbiblastpCommandline(query="../data/blast/peptides.faa", db="../data/blast/db/blast/peptides", num_threads = 3, outfmt=5, out=out_file.name)
+    print("BLAST started....")
+    blastp_cline()
+    print("BLAST completed.")
 
 
+    result_handle = open(out_file.name)
+    blast_records = NCBIXML. parse(result_handle)
+    for blast_record in blast_records:
+        pid_t = int(blast_record.query)
+        len_t = blast_record.query_letters
+        for al in blast_record.alignments:
+            pid_r = int(al.title.split()[-1])
+            len_r = al.length
+            if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
+                uf.union (dic[pid_t], dic[pid_r])
 
 
+    peptides = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
+
+    try:
+        cur.execute("SELECT DISTINCT * FROM pep_sn;")
+        if cur.rowcount == 0:
+            print("Eror: there are no peptides related to species in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    records = dict()
+    for tup in cur: 
+        if tup[1] not in records:
+            records[tup[1]] = [str(0)] * len(peptides)  
+        
+        f = dicI[uf.find(dic[tup[0]])]
+        records[tup[1]][peptides.index(f)] = 1
+
+    out_file.close()
+    cur.close()
+    conn.close()
+
+    return records
