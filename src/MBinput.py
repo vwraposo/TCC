@@ -49,10 +49,11 @@ class CreateInput(cmd.Cmd):
         conn.close()
 
         ## Standard
-        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein']
+        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein', 'peptides']
         self.selected['protein'] = False 
         self.selected['lec_protein'] = False 
         self.selected['all_protein'] = False 
+        self.selected['peptides'] = False 
 
         self.do_list("")
     
@@ -68,7 +69,7 @@ class CreateInput(cmd.Cmd):
         try:
             if datatype == 'DNA' or datatype == 'Codon':
                 records = mw.getAlignedSeq(chset) 
-            else:
+            elif datatype == 'Standard':
                 records = mw.getStandard(chset) 
             self.selected[chset] = datatype
         except:
