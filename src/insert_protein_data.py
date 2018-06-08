@@ -31,7 +31,6 @@ for file in os.listdir(directory):
         reader = csv.DictReader(csvfile, delimiter=';')
         
         species = str(file).split()[1][:-5]
-        print(species)
         protein = ''
         toxclass = ''
         for row in reader:
@@ -42,7 +41,6 @@ for file in os.listdir(directory):
                 # New Protein 
                 for pr in protein.split(','):
                     pr = pr.strip()
-
                     try:
                         cur.execute("INSERT INTO proteins(pr_acc, pr_toxclass, pr_T) VALUES ('{0}', '{1}', 1)\
                                 ON CONFLICT DO NOTHING;".format(pr, toxclass))
@@ -56,17 +54,22 @@ for file in os.listdir(directory):
 
                     conn.commit()
 
-             # Add Peptide
+            # Add Peptide
             peptide = row['Peptides']
+            if (peptide == ''): 
+                continue;
             for pr in protein.split(','):
                 pr = pr.strip()
                 try:
-                    cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
-                            ON CONFLICT DO NOTHING;".format(peptide))
-                    cur.execute("INSERT INTO pep_sn(pep_seq, sn_sp) VALUES ('{0}', '{1}')\
-                            ON CONFLICT DO NOTHING;".format(peptide, species))
-                    cur.execute("INSERT INTO pep_pr(pep_seq, pr_acc) VALUES ('{0}', '{1}') \
-                            ON CONFLICT DO NOTHING;".format(peptide, pr))
+                    cur.execute("SELECT pep_id FROM peptides WHERE pep_seq = '{0}';".format(peptide))
+                    if (cur.rowcount == 0):
+                        cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
+                            ON CONFLICT DO NOTHING RETURNING pep_id;".format(peptide))
+                    pid = cur.fetchone()[0]
+                    cur.execute("INSERT INTO pep_sn(pep_id, sn_sp) VALUES ('{0}', '{1}')\
+                            ON CONFLICT DO NOTHING;".format(pid, species))
+                    cur.execute("INSERT INTO pep_pr(pep_id, pr_acc) VALUES ('{0}', '{1}') \
+                            ON CONFLICT DO NOTHING;".format(pid, pr))
                 except psycopg2.ProgrammingError as e:
                     print("Insert error")
                     print(e)
@@ -130,15 +133,20 @@ for file in os.listdir(directory):
                         conn.commit()
 
             peptide = row['Peptides']
+            if (peptide == ''): 
+                continue;
             for pr in protein.split(','):
                 pr = pr.strip()
                 try:
-                    cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
-                            ON CONFLICT DO NOTHING;".format(peptide))
-                    cur.execute("INSERT INTO pep_sn(pep_seq, sn_sp) VALUES ('{0}', '{1}')\
-                            ON CONFLICT DO NOTHING;".format(peptide, species))
-                    cur.execute("INSERT INTO pep_pr(pep_seq, pr_acc) VALUES ('{0}', '{1}') \
-                            ON CONFLICT DO NOTHING;".format(peptide, pr))
+                    cur.execute("SELECT pep_id FROM peptides WHERE pep_seq = '{0}';".format(peptide))
+                    if (cur.rowcount == 0):
+                        cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
+                            ON CONFLICT DO NOTHING RETURNING pep_id;".format(peptide))
+                    pid = cur.fetchone()[0]
+                    cur.execute("INSERT INTO pep_sn(pep_id, sn_sp) VALUES ('{0}', '{1}')\
+                            ON CONFLICT DO NOTHING;".format(pid, species))
+                    cur.execute("INSERT INTO pep_pr(pep_id, pr_acc) VALUES ('{0}', '{1}') \
+                            ON CONFLICT DO NOTHING;".format(pid, pr))
                 except psycopg2.ProgrammingError as e:
                     print("Insert error")
                     print(e)

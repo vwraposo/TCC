@@ -31,8 +31,10 @@ INSERT INTO snakes(sn_sp, sn_ge) VALUES ('cotiara', 'Bothrops');
 -- Creating Protein and Peptide:
 
 CREATE TABLE peptides (
+  pep_id serial,
   pep_seq varchar(100) not NULL, 
-  CONSTRAINT pk_pep PRIMARY KEY (pep_seq)
+  CONSTRAINT pk_pep PRIMARY KEY (pep_id),
+  CONSTRAINT sk_pep UNIQUE (pep_seq)
 );
 
 CREATE TABLE proteins (
@@ -46,17 +48,17 @@ CREATE TABLE proteins (
 );
 
 CREATE TABLE pep_pr (
-  pep_seq varchar(100), 
+  pep_id integer, 
   pr_acc varchar(100),
   CONSTRAINT fk_pr FOREIGN KEY (pr_acc)
     REFERENCES proteins(pr_acc)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT fk_pep FOREIGN KEY (pep_seq)
-    REFERENCES peptides(pep_seq)
+  CONSTRAINT fk_pep FOREIGN KEY (pep_id)
+    REFERENCES peptides(pep_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT pk_pep_pr UNIQUE (pr_acc, pep_seq)
+  CONSTRAINT pk_pep_pr UNIQUE (pr_acc, pep_id)
 );
 
 CREATE TABlE pr_sn (
@@ -74,15 +76,15 @@ CREATE TABlE pr_sn (
 );
 
 CREATE TABLE pep_sn (
-  pep_seq varchar(100), 
+  pep_id integer, 
   sn_sp varchar(100),
   CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
     REFERENCES snakes(sn_sp)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT fk_pep FOREIGN KEY (pep_seq)
-    REFERENCES peptides(pep_seq)
+  CONSTRAINT fk_pep FOREIGN KEY (pep_id)
+    REFERENCES peptides(pep_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT pk_pep_sn UNIQUE (pep_seq, sn_sp)
+  CONSTRAINT pk_pep_sn UNIQUE (pep_id, sn_sp)
 );
