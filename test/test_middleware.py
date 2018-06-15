@@ -17,7 +17,7 @@ def test_error ():
 def test_getProteinError():
     with pytest.raises(Exception):
         mw._getProteins('NotDef')
-       
+
 def test_getProteins():
     records = mw._getProteins('T')
     assert len(records) == 7
@@ -34,3 +34,18 @@ def test_getProteins():
     for rec in records:
         for i in records[rec]:
             assert (i == '0' or i == '1' or i == '2' or i == '3' or i == '4')
+
+def test_getPeptides():
+    records = mw._getPeptides()
+    assert len(records) == 7
+    for rec in records:
+        for i in records[rec]:
+            assert (i == '0' or i == '1')
+
+def test_getGlycans():
+    records = mw._getGlycans()
+    assert len(records) == 7
+    for rec in records:
+        for i in records[rec]:
+            assert (i == '0' or i == '1')
+
