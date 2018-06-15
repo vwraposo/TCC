@@ -49,11 +49,12 @@ class CreateInput(cmd.Cmd):
         conn.close()
 
         ## Standard
-        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein', 'peptides']
+        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein', 'peptides', 'glycans']
         self.selected['protein'] = False 
         self.selected['lec_protein'] = False 
         self.selected['all_protein'] = False 
         self.selected['peptides'] = False 
+        self.selected['glycans'] = False
 
         self.do_list("")
     
@@ -180,7 +181,11 @@ class CreateInput(cmd.Cmd):
             tmp = ""
             if self.selected[ch] != False:
                 tmp = "*"
-            out[self.charset['Standard'].index(ch) + 3] += " {0} {1}{2}|".format(ch, tmp, " " * (15 - len(ch) - len(tmp) -1))
+            if (self.charset['Standard'].index(ch) + 3 > len(out) - 1):
+                out.append(" {0}|".format(" " * 15) + " {0} {1}{2}|".format(ch, tmp, " " * (15 - len(ch) - len(tmp) -1)))
+
+            else:
+                out[self.charset['Standard'].index(ch) + 3] += " {0} {1}{2}|".format(ch, tmp, " " * (15 - len(ch) - len(tmp) -1))
         out.append('-' * (17 * len(self.charset)))
         out.append('* (<datatype>) - charset was selected as <datatype>')
         print('\n'.join(out))

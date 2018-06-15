@@ -72,6 +72,8 @@ def getStandard(chset):
         return _getProteins('TL') 
     elif chset == 'peptides':
         return _getPeptides()
+    elif chset == 'glycans':
+        return _getGlycans()
     else:
         print("Error: charset not defined.")
         raise Exception
@@ -98,7 +100,7 @@ def _getProteins(typ):
     try:
         cur.execute("SELECT DISTINCT pr_acc FROM proteins {0};".format(where))
         if cur.rowcount == 0:
-            print("Error: there are no proteins in the database.")
+            print("Error: there are not proteins in the database.")
             raise Exception
     except psycopg2.ProgrammingError as e:
         print(e)
@@ -118,7 +120,7 @@ def _getProteins(typ):
     try:
         cur.execute("SELECT DISTINCT * FROM pr_sn, proteins WHERE pr_sn.pr_acc = proteins.pr_acc {0};".format(where))
         if cur.rowcount == 0:
-            print("Eror: there are no proteins related to species in the database.")
+            print("Eror: there are not proteins related to species in the database.")
             raise Exception
     except psycopg2.ProgrammingError as e:
         print(e)
@@ -157,7 +159,7 @@ def _getPeptides():
     try:
         cur.execute("SELECT DISTINCT pep_id FROM peptides;")
         if cur.rowcount == 0:
-            print("Error: there are no peptides in the database.")
+            print("Error: there are not peptides in the database.")
             raise Exception
     except psycopg2.ProgrammingError as e:
         print(e)
@@ -196,7 +198,7 @@ def _getPeptides():
     try:
         cur.execute("SELECT DISTINCT * FROM pep_sn;")
         if cur.rowcount == 0:
-            print("Eror: there are no peptides related to species in the database.")
+            print("Eror: there are not peptides related to species in the database.")
             raise Exception
     except psycopg2.ProgrammingError as e:
         print(e)
@@ -214,5 +216,48 @@ def _getPeptides():
     out_file.close()
     cur.close()
     conn.close()
+
+    return records
+
+# Returns the N-glycan data from the database in a binary form 
+def _getGlycans():
+    try:
+        conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
+    except:
+        print("Error: it was not possible to connect to the database")
+        sys.exit(1)
+
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT DISTINCT gl_id FROM glycans;")
+        if cur.rowcount == 0:
+            print("Error: there are not glycans in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    glycans = [tup[0] for tup in cur]
+    try:
+        cur.execute("SELECT DISTINCT * FROM gl_sn;")
+        if cur.rowcount == 0:
+            print("Eror: there are not glycans related to species in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
+
+    records = dict()
+    for tup in cur: 
+        if tup[1] not in records:
+            records[tup[1]] = [str(0)] * len(glycans)  
+
+        records[tup[1]][glycans.index(tup[0])] = str(1)
+
+    cur.close()
+    conn.close()
+    
 
     return records

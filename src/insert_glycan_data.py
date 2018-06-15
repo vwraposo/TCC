@@ -47,5 +47,8 @@ with open(filename, 'r') as csvfile:
 
                 conn.commit()
 
+cur.close()
+conn.close()
+
             
 
