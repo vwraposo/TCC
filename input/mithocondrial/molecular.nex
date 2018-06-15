@@ -56,5 +56,6 @@ begin mrbayes;
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset ratepr=variable;
+        mcmc ngen=2000000 samplefreq=100;
 
 end;
