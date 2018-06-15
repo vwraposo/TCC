@@ -47,7 +47,7 @@ class NexusWriter:
         self.taxa = set()
         self.tchar = 0
         # <charset> : <seq> #
-        self.ngen = 2e6
+        self.ngen = int(2e6)
         self.smpfreq = 100
 
     # Function to add a new data entry, recieves a taxon, the type of data and the sequence. 
