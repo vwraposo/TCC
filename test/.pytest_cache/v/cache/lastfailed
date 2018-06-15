@@ -1,4 +1,5 @@
 {
   "test_align.py": true,
-  "test_middleware.py::test_getProtein": true
+  "test_middleware.py::test_getProtein": true,
+  "test_nexus.py::test_GenParams": true
 }

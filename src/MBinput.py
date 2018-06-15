@@ -92,7 +92,14 @@ class CreateInput(cmd.Cmd):
         for i in self.selected:
             self.selected[i] = False
         print("Ready to create a new file.")
+
+    def do_setNgen (self, arg):
+        self.nwriter.setNgen (arg) 
+        print("Success: Number of generations set to {0}.".format(arg))
         
+    def do_setSampleFreq (self, arg):
+        self.nwriter.setSampleFreq (arg)
+        print("Success: Sample frequency set to {0}.".format(arg))
     
     # Adds all charsets from the given table to the nexus file
     def do_add_all(self, args):

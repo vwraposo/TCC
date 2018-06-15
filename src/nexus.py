@@ -29,7 +29,7 @@ mb_template = Template("""begin mrbayes;
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset applyto=(all) ratepr=variable;
-        mcmc ngen=2000000 samplefreq=100;
+        mcmc ngen=$ngen samplefreq=$smpfreq;
 
 end;
 """)
@@ -47,6 +47,8 @@ class NexusWriter:
         self.taxa = set()
         self.tchar = 0
         # <charset> : <seq> #
+        self.ngen = 2e6
+        self.smpfreq = 100
 
     # Function to add a new data entry, recieves a taxon, the type of data and the sequence. 
     def add (self, taxon, charset, datatype, seq):
@@ -74,6 +76,19 @@ class NexusWriter:
             raise(Exception)
         dic[charset][taxon] = seq
 
+
+    # Function to set genertion parameters
+    def setNgen (self, ngen):
+        if not ngen.isdigit():
+            print("Parameter is not a number.")
+            raise(Exception)
+        self.ngen = int(ngen)
+    def setSampleFreq (self, smpfreq):
+        if not smpfreq.isdigit():
+            print("Parameter is not a number.")
+            raise(Exception)
+        self.smpfreq = int(smpfreq)
+
     # Function that writes the nexus file
     def writeFile (self, outfile):
         data = data_template.substitute(
@@ -85,7 +100,9 @@ class NexusWriter:
 
         code = mb_template.substitute(
             partition = self._makePartition(), 
-            code = self._makeCode()
+            code = self._makeCode(), 
+            ngen = self.ngen, 
+            smpfreq = self.smpfreq
             )
         f = open(outfile, 'w')
         f.write(data)

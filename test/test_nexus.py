@@ -17,6 +17,18 @@ def test_add ():
    assert len(n.taxa) == 2
    assert n.tchar == 15 
 
+
+def test_GenParams():
+    n = NexusWriter ()
+    with pytest.raises(Exception):
+        n.setNgen("NOT NUMBER")
+        n.setSampleFreq("NOT NUMBER")
+    n.setNgen("1")
+    n.setSampleFreq("1")
+    assert n.ngen == 1
+    assert n.smpfreq == 1
+
+
 def test_addError():
     n = NexusWriter ()
     with pytest.raises(Exception):
