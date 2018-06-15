@@ -1,0 +1,29 @@
+#NEXUS
+
+Begin data;
+        Dimensions ntax=7 nchar=52;
+        Format datatype=Standard interleave=yes gap=- missing=?;
+        Matrix
+	cotiara 1110110000100000101000000100000011001000010101001011
+	erythromelas 0010000010001011000100101000001000000101100000010100
+	insularis 0011001100000100010010010111110101110010001010000001
+	jararaca 0011001100000100010010010111110101110010001010000001
+	jararacussu 0010000010011011000100101000001000010101100000100101
+	moojeni 0010000011011011000101101000001000010101100000110101
+	neuwiedi 0010000011011011000101101000001000010101100000110101
+
+    ;
+End;
+begin mrbayes;
+    	charset glycans = 1-52;
+	partition part = 1: glycans;
+
+        set partition = part;
+
+    	lset applyto=(1) rates=gamma;
+
+        unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
+        prset applyto=(all) ratepr=variable;
+        mcmc ngen=2000000 samplefreq=100;
+
+end;
