@@ -55,7 +55,7 @@ for file in os.listdir(directory):
                     conn.commit()
 
             # Add Peptide
-            peptide = row['Peptides']
+            peptide = row['Peptides'].upper()
             if (peptide == ''): 
                 continue;
             for pr in protein.split(','):
@@ -132,7 +132,7 @@ for file in os.listdir(directory):
                             print("Rollback complete")
                         conn.commit()
 
-            peptide = row['Peptides']
+            peptide = row['Peptides'].upper()
             if (peptide == ''): 
                 continue;
             for pr in protein.split(','):
