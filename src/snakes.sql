@@ -88,3 +88,25 @@ CREATE TABLE pep_sn (
     ON UPDATE CASCADE,
   CONSTRAINT pk_pep_sn UNIQUE (pep_id, sn_sp)
 );
+
+-- Creating N-glycan table
+
+CREATE TABLE glycans (
+  gl_id varchar(5), 
+  CONSTRAINT pk_gl PRIMARY KEY (gl_id)
+);
+
+CREATE TABLE gl_sn (
+  gl_id varchar(5), 
+  sn_sp varchar(100),
+  CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
+    REFERENCES snakes(sn_sp)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_gl FOREIGN KEY (gl_id)
+    REFERENCES glycans(gl_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT pk_gl_sn UNIQUE (gl_id, sn_sp)
+);
+

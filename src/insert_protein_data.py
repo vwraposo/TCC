@@ -1,12 +1,11 @@
 ##################################################################################
 ##                                                                              ##
-##  Module that insert the protein and peptide data from xls files              ##
+##  Module that insert the protein and peptide data from csv files              ##
 ##                                                                              ##
 ##################################################################################
 import psycopg2
 import sys
 import os
-import xlrd
 import csv
 
 
