@@ -110,3 +110,33 @@ CREATE TABLE gl_sn (
   CONSTRAINT pk_gl_sn UNIQUE (gl_id, sn_sp)
 );
 
+
+-- Tables for geologic and eating habits data 
+
+CREATE TABLE geography (
+  sn_sp varchar(100) not NULL, 
+  CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
+    REFERENCES snakes(sn_sp)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  loc varchar(100),
+  CONSTRAINT pk_geo UNIQUE (loc, sn_sp)
+);
+
+CREATE TABLE eating (
+  sn_sp varchar(100), 
+  CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
+    REFERENCES snakes(sn_sp)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  N integer, 
+  centipedes real, 
+  anurans real, 
+  lizards real, 
+  snakes real, 
+  birds real, 
+  mammals real,
+  CONSTRAINT pk_eat PRIMARY KEY (sn_sp)
+);
+
+
