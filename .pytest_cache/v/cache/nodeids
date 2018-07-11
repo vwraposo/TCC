@@ -1,1 +1,8 @@
-[]
+[
+  "test/test_lapointe.py::test_checkers",
+  "test/test_lapointe.py::test_init",
+  "test/test_lapointe.py::test_decomposition",
+  "test/test_lapointe.py::test_standardize",
+  "test/test_lapointe.py::test_NISI",
+  "test/test_lapointe.py::test_SSD"
+]
