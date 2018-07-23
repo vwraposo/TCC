@@ -7,6 +7,8 @@ import numpy as np
 # O algoritmo de decomposicao parece estranho
 
 # NISI da entre 0 e 1?
+
+# NISI divide por 0?
 def _checkDMatrix(A):
     if not np.allclose(A, A.T):
         raise Exception
@@ -40,8 +42,8 @@ def standardize(A):
     return A / np.max(A)
 
 def getDecomposition(A):
-   """ Compute the decomposition of a distance matrix into the matrix of
-   the ultrametric tree and the matrix of the star tree
+    """ Compute the decomposition of a distance matrix into the matrix of
+    the ultrametric tree and the matrix of the star tree
 
     Parameters
     ----------
@@ -95,6 +97,8 @@ def NISI(A, B):
     result = 0
     for i in range(n):
         for j in range(n):
+            if j == i:
+                continue
             Cu = 1 - max(A[i][j], B[i][j])
             Co = abs(A[i][j] - B[i][j]) 
             MX = max(Cu, Co)
@@ -162,6 +166,8 @@ class LL:
         _checkDMatrixes(self.dm1, self.dm2)
         a = getDecomposition(self.dm1)
         b = getDecomposition(self.dm2)
+
+        print(ll.NISI())
 
 
     
