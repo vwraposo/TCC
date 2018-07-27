@@ -1,0 +1,30 @@
+#NEXUS
+[ID: 4107552205]
+begin taxa;
+	dimensions ntax=9;
+	taxlabels
+		cotiara
+		diporus
+		erythromelas
+		goyazensis
+		insularis
+		jararaca
+		jararacussu
+		matogrossensis
+		moojeni
+		;
+end;
+begin trees;
+	translate
+		1	cotiara,
+		2	diporus,
+		3	erythromelas,
+		4	goyazensis,
+		5	insularis,
+		6	jararaca,
+		7	jararacussu,
+		8	matogrossensis,
+		9	moojeni
+		;
+   tree con_50_majrule = [&U] (1[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.430399e-01[&length_mean=1.44975001e-01,length_median=1.43039900e-01,length_95%HPD={9.81668900e-02,1.96506900e-01}],(7[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:6.328779e-02[&length_mean=6.45501378e-02,length_median=6.32877900e-02,length_95%HPD={3.26968800e-02,9.93126600e-02}],9[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.111934e-01[&length_mean=1.13048725e-01,length_median=1.11193400e-01,length_95%HPD={7.04917100e-02,1.58430300e-01}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:6.015586e-02[&length_mean=6.18050533e-02,length_median=6.01558600e-02,length_95%HPD={2.58499100e-02,1.00026800e-01}],(((2[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:3.918170e-02[&length_mean=3.99822831e-02,length_median=3.91817000e-02,length_95%HPD={2.07667100e-02,6.12900700e-02}],(4[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.830572e-02[&length_mean=1.88524617e-02,length_median=1.83057200e-02,length_95%HPD={8.19519200e-03,3.02583100e-02}],8[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:5.279641e-03[&length_mean=5.88974272e-03,length_median=5.27964100e-03,length_95%HPD={8.66133800e-07,1.31418800e-02}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:3.768091e-02[&length_mean=3.83414745e-02,length_median=3.76809100e-02,length_95%HPD={2.02820100e-02,5.92978800e-02}])[&prob=9.90600627e-01,prob_stddev=0.00000000e+00,prob_range={9.90600627e-01,9.90600627e-01},prob(percent)="99",prob+-sd="99+-0"]:2.249392e-02[&length_mean=2.35488779e-02,length_median=2.24939200e-02,length_95%HPD={5.27376600e-03,4.38884100e-02}],3[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:5.076250e-02[&length_mean=5.15554062e-02,length_median=5.07625000e-02,length_95%HPD={2.79128200e-02,7.53504900e-02}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:8.983133e-02[&length_mean=9.14214759e-02,length_median=8.98313300e-02,length_95%HPD={5.66292800e-02,1.28450900e-01}],(5[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.283992e-02[&length_mean=1.34264167e-02,length_median=1.28399200e-02,length_95%HPD={2.24209100e-03,2.48798600e-02}],6[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.297797e-02[&length_mean=1.36901308e-02,length_median=1.29779700e-02,length_95%HPD={2.65396600e-03,2.57374300e-02}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:4.601521e-02[&length_mean=4.70720272e-02,length_median=4.60152100e-02,length_95%HPD={2.10066000e-02,7.65415100e-02}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:4.778367e-02[&length_mean=4.93092629e-02,length_median=4.77836700e-02,length_95%HPD={2.14260300e-02,8.13289200e-02}]);
+end;

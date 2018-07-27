@@ -1,0 +1,22 @@
+#NEXUS
+[ID: 4107552205]
+[This file contains the trees that were found during the MCMC
+search, sorted by posterior probability. "p" indicates the
+posterior probability of the tree whereas "P" indicates the
+cumulative posterior probability.]
+
+begin trees;
+   translate
+    1 cotiara,
+    2 diporus,
+    3 erythromelas,
+    4 goyazensis,
+    5 insularis,
+    6 jararaca,
+    7 jararacussu,
+    8 matogrossensis,
+    9 moojeni;
+   tree tree_1 [p = 0.991, P = 0.991] = [&W 0.990601] ((9,7),((6,5),(((8,4),2),3)),1);
+   tree tree_2 [p = 0.006, P = 0.997] = [&W 0.006500] ((9,7),((6,5),(2,((8,4),3))),1);
+   tree tree_3 [p = 0.003, P = 1.000] = [&W 0.002900] ((9,7),((6,5),((8,4),(2,3))),1);
+end;

@@ -15,7 +15,8 @@ CREATE TABLE mtDNAs (
   CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
     REFERENCES snakes(sn_sp)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT alias UNIQUE (sn_sp, mt_alias)
 );
 
 -- Inserting snakes
