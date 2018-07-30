@@ -1,3 +1,9 @@
+##################################################################################
+##                                                                              ##
+##   Module that writes a FASTA file containing all the peptide data for the    ##
+##   creation of a BLAST database.                                              ##
+##                                                                              ##
+##################################################################################
 import psycopg2
 import sys
 from Bio import SeqIO
@@ -5,8 +11,6 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import generic_dna, generic_protein
 
-
-# Create a fasta file with the Peptides in the database
 
 try:
     conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")

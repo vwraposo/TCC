@@ -1,3 +1,9 @@
+##################################################################################
+##                                                                              ##
+##  Module with the implementation of the CADM test for comparing trees         ##
+##  from Campbell 2011                                                          ##
+##                                                                              ##
+##################################################################################
 import rpy2.robjects as robjects
 import dendropy
 import numpy as np

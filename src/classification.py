@@ -1,3 +1,9 @@
+##################################################################################
+##                                                                              ##
+##   Module that uses classifiers to do the clustering of the morphological,    ##
+##   geographical and diet data.                                                ##
+##                                                                              ##
+##################################################################################
 from sklearn import svm, preprocessing
 from sklearn.cluster import KMeans
 import numpy as np
