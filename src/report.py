@@ -23,7 +23,7 @@ for d in os.listdir(directory):
         continue
     print('Target: ' + dname)
     tree = '{0}{1}/{1}.nex.con.tre'.format(dirname, dname)
-    CADM(mith, tree)
+    CADM(mith, tree, '-t')
 
     print(30*("-"))
     
