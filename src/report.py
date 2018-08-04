@@ -1,4 +1,3 @@
-
 ##################################################################################
 ##                                                                              ##
 ##  Module to create a report of the results obtained. By using the CADM code   ##

@@ -10,12 +10,7 @@ import numpy as np
 import tempfile 
 import sys
 
-if __name__ == '__main__':
-    if len(sys.argv) != 4:
-        print("Too many arguments")
-        sys.exit(-1)
 
-    CADM(sys.argv[1], sys.argv[2], sys.argv[3])
 
 def CADM (t1, t2, v='-p'):
     if (v == "-t"):
@@ -43,7 +38,10 @@ def CADM (t1, t2, v='-p'):
     res = robjects.globalenv['res.global']
     print(res)
 
-# CADM("../test/t1.nex", "../test/t2.nex", "-t")
-# # lec_protein all_protein
-# CADM("../test/t3.nex", "../test/t4.nex" )
-# CADM("../input/mithocondrial/molecular.nex.con.tre", "../test/t4.nex")
+if __name__ == '__main__':
+    if len(sys.argv) != 4:
+        print("Wrong number of arguments")
+        sys.exit(-1)
+
+    CADM(sys.argv[1], sys.argv[2], sys.argv[3])
+
