@@ -1,0 +1,164 @@
+Report comparing topology using the CADM test of the resulting trees with the tree obtained with the mithocondrial data.
+------------------------------
+Target: gl_pep
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.015000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5419441
+Chi2      21.6777630
+Prob.perm  0.2500000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: protein
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5067114
+Chi2      20.2684564
+Prob.perm  0.3600000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: all_protein
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5203098
+Chi2      20.8123924
+Prob.perm  0.3200000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: lec_protein
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.015000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5100671
+Chi2      20.4026846
+Prob.perm  0.3900000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: glycans
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.012000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.4537284
+Chi2      18.1491345
+Prob.perm  0.5500000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: peptides
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5884073
+Chi2      23.5362917
+Prob.perm  0.2500000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------

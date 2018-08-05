@@ -1,0 +1,193 @@
+Report comparing topology using the CADM test of the resulting trees 
+ (with one snake species missing) with the tree obtained with the mithocondrial data.
+------------------------------
+Target: s-cotiara
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.014000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.7242817
+Chi2      20.2798888
+Prob.perm  0.1100000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+.DS_Store
+Target: s-neuwiedi
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.012000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W           0.637164
+Chi2       17.840593
+Prob.perm   0.240000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: s-jararaca
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.014000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5203892
+Chi2      14.5708990
+Prob.perm  0.3200000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: s-moojeni
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.012000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.4277108
+Chi2      11.9759036
+Prob.perm  1.0000000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: s-insularis
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.012000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.6084337
+Chi2      17.0361446
+Prob.perm  0.2800000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: s-erythromelas
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.012000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.5199052
+Chi2      14.5573460
+Prob.perm  0.4600000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: s-jararacussu
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.4277108
+Chi2      11.9759036
+Prob.perm  1.0000000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
