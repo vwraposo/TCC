@@ -18,7 +18,7 @@ from Bio.Blast.Applications import NcbiblastpCommandline
 from Bio.Blast import NCBIXML
 
 
-# Recieve a type (alias) of mtDNA, then get the sequences from the database and returns the aligned sequences  
+# Recieve a type (alias) of gene, then get the sequences from the database and returns the aligned sequences  
 def getAlignedSeq(alias):
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
@@ -28,7 +28,7 @@ def getAlignedSeq(alias):
 
     cur = conn.cursor()
     try:
-        cur.execute("SELECT * FROM mtdnas WHERE mt_alias = '{0}';".format(alias))
+        cur.execute("SELECT * FROM genes WHERE gn_alias = '{0}';".format(alias))
         if cur.rowcount == 0:
             print("Eror: no data with the alias: {0}".format(alias))
             raise Exception

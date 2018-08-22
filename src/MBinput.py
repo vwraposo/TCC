@@ -33,12 +33,12 @@ class CreateInput(cmd.Cmd):
 
         cur = conn.cursor()
 
-        ## mtDNA 
-        self.charset['mtDNA'] = []
+        ## genes 
+        self.charset['genomic'] = []
         try:
-            cur.execute("SELECT DISTINCT mt_alias FROM mtdnas;")
+            cur.execute("SELECT DISTINCT gn_alias FROM genes;")
             for ch in cur:
-                self.charset['mtDNA'].append(ch[0])
+                self.charset['genomic'].append(ch[0])
                 self.selected[ch[0]] = False
         except psycopg2.ProgrammingError as e:
             print(e)
@@ -114,7 +114,7 @@ class CreateInput(cmd.Cmd):
             if arg not in self.charset:
                 print("Error: table '{0}' not in the database".format(arg))
                 continue
-            if arg == 'mtDNA':
+            if arg == 'genomic':
                 datatype = 'DNA'
             else:
                 datatype = 'Standard'
@@ -172,7 +172,7 @@ class CreateInput(cmd.Cmd):
             s = s + " {0}{1}|".format(typ, " "* (15 - len(typ)))
         out.append(s)
         out.append('-' * (17 * len(self.charset)))
-        for ch in self.charset['mtDNA']:
+        for ch in self.charset['genomic']:
             tmp = ""
             if self.selected[ch] != False:
                 tmp = "* ({0})".format(self.selected[ch])

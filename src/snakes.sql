@@ -5,18 +5,18 @@ CREATE TABLE snakes (
   CONSTRAINT pk_sn PRIMARY KEY (sn_sp)
 );
 
-CREATE TABLE mtDNAs (
-  mt_acc varchar(100) not NULL, 
-  mt_desc text, 
-  mt_seq text, 
-  mt_alias varchar(100), 
+CREATE TABLE genes(
+  gn_acc varchar(100) not NULL, 
+  gn_desc text, 
+  gn_seq text, 
+  gn_alias varchar(100), 
   sn_sp varchar(100), 
-  CONSTRAINT pk_mt PRIMARY KEY (mt_acc), 
+  CONSTRAINT pk_gn PRIMARY KEY (gn_acc), 
   CONSTRAINT fk_sn FOREIGN KEY (sn_sp)
     REFERENCES snakes(sn_sp)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT alias UNIQUE (sn_sp, mt_alias)
+  CONSTRAINT alias UNIQUE (sn_sp, gn_alias)
 );
 
 -- Inserting snakes

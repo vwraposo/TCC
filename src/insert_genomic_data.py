@@ -27,24 +27,24 @@ for file in os.listdir(directory):
     print("Processing: " + filename)
     for rec in SeqIO.parse(filename, "fasta"):
         print (rec.id)
-        mt_acc = rec.id
-        mt_desc = rec.description 
-        mt_alias = ''
+        gn_acc = rec.id
+        gn_desc = rec.description 
+        gn_alias = ''
         for s in aliases:
-            if s in mt_desc:
+            if s in gn_desc:
                 if s == 'NADH':
-                    mt_alias = 'ND4'
+                    gn_alias = 'ND4'
                 else:
-                    mt_alias = s
+                    gn_alias = s
                 break
-        if mt_alias == '':
+        if gn_alias == '':
             print("Error: alias not found")
             sys.exit(1)
-        mt_seq = rec.seq
-        sn_sp = mt_desc.split()[2]
+        gn_seq = rec.seq
+        sn_sp = gn_desc.split()[2]
         try:
-            cur.execute("INSERT INTO mtDNAs(mt_acc, mt_desc, mt_seq, mt_alias, sn_sp) VALUES"
-                    "('{0}', '{1}', '{2}', '{3}', '{4}');".format(mt_acc, mt_desc, mt_seq, mt_alias, sn_sp))
+            cur.execute("INSERT INTO genes(gn_acc, gn_desc, gn_seq, gn_alias, sn_sp) VALUES"
+                    "('{0}', '{1}', '{2}', '{3}', '{4}');".format(gn_acc, gn_desc, gn_seq, gn_alias, sn_sp))
         except psycopg2.ProgrammingError as e:
             print("Insert error")
             print(e)
