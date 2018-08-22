@@ -191,7 +191,7 @@ def _getPeptides():
             if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
                 if (pid_t not in dic) or (pid_r not in dic):
                     print("Error: BLAST database not congruent with local database")
-                    sys.exit(-1)
+                    sys.exit(1)
                 uf.union (dic[pid_t], dic[pid_r])
                 break
 
