@@ -189,6 +189,9 @@ def _getPeptides():
             pid_r = int(al.title.split()[-1])
             len_r = al.length
             if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
+                if (pid_t not in dic) or (pid_r not in dic):
+                    print("Error: BLAST database not congruent with local database")
+                    sys.exit(-1)
                 uf.union (dic[pid_t], dic[pid_r])
                 break
 
@@ -261,3 +264,4 @@ def _getGlycans():
     
 
     return records
+
