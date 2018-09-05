@@ -27,6 +27,7 @@ INSERT INTO snakes(sn_sp, sn_ge) VALUES ('erythromelas', 'Bothrops');
 INSERT INTO snakes(sn_sp, sn_ge) VALUES ('insularis', 'Bothrops');
 INSERT INTO snakes(sn_sp, sn_ge) VALUES ('jararaca', 'Bothrops');
 INSERT INTO snakes(sn_sp, sn_ge) VALUES ('cotiara', 'Bothrops');
+INSERT INTO snakes(sn_sp, sn_ge) VALUES ('atrox', 'Bothrops');
 
 
 -- Creating Protein and Peptide:

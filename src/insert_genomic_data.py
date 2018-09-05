@@ -44,7 +44,8 @@ for file in os.listdir(directory):
         sn_sp = gn_desc.split()[2]
         try:
             cur.execute("INSERT INTO genes(gn_acc, gn_desc, gn_seq, gn_alias, sn_sp) VALUES"
-                    "('{0}', '{1}', '{2}', '{3}', '{4}');".format(gn_acc, gn_desc, gn_seq, gn_alias, sn_sp))
+                    "('{0}', '{1}', '{2}', '{3}', '{4}') \
+                    ON CONFLICT DO NOTHING;".format(gn_acc, gn_desc, gn_seq, gn_alias, sn_sp))
         except psycopg2.ProgrammingError as e:
             print("Insert error")
             print(e)
