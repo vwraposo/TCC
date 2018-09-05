@@ -1,0 +1,119 @@
+Sample name;Peptide sequence;Identification probability;Mascot Ion score;X! Tandem -log(e) score;Modification;Calculated mass (u);Charge (z);Measured mass error (ppm)
+Degraded_Replicate_01;NWADAER;98,8%;10,1;2,1;Carbamidomethyl (+57);917,4;2;-1,3
+Degraded_Replicate_01;QCNSEWSDGSSISYENWTEAELK;99,7%;47,2;3,9;Carbamidomethyl (+57);2719,1;3;-1,0
+Degraded_Replicate_01;TCIALEEDSGFR;99,7%;49,2;5,7;Carbamidomethyl (+57);1396,6;2;0,6
+Degraded_Replicate_01;TCIALEEDSGFRK;99,7%;51,9;0,2;Carbamidomethyl (+57);1524,7;3;-4,7
+Degraded_Replicate_01;TCIALEEDSGFRK;99,7%;30,0;2,4;Carbamidomethyl (+57), Carbamidomethyl (+57);1581,8;3;-0,6
+Degraded_Replicate_01;WLNLNCR;98,8%;10,8;2,1;Carbamidomethyl (+57), Carbamidomethyl (+57);1031,5;2;-0,9
+Degraded_Replicate_01;WNVWIGLR;99,7%;40,7;1,8;;1042,6;2;-2,2
+Degraded_Replicate_02;QCNSEWSDGSSISYENWTEAELK;99,7%;26,2;4,4;Carbamidomethyl (+57);2719,1;3;1,2
+Degraded_Replicate_02;TCIALEEDSGFR;99,7%;53,6;5,6;Carbamidomethyl (+57);1396,6;2;2,7
+Degraded_Replicate_02;TCIALEEDSGFRK;99,7%;29,0;3,3;Carbamidomethyl (+57);1524,7;3;-3,8
+Degraded_Replicate_02;WLNLNCR;98,8%;18,6;2,3;Carbamidomethyl (+57), Carbamidomethyl (+57);1031,5;2;1,0
+Degraded_Replicate_02;WLNLNCR;98,8%;22,5;2,0;Deamidated (+1), Carbamidomethyl (+57);975,5;2;0,2
+Degraded_Replicate_02;WNVWIGLR;99,7%;41,2;1,2;;1042,6;2;3,9
+Floodplain_Replicate_01;TCIALEEDSGFRK;99,7%;39,8;2,2;Carbamidomethyl (+57);1524,7;3;-0,7
+Floodplain_Replicate_01;WLNLNCR;98,8%;23,3;2,2;Carbamidomethyl (+57);974,5;2;-1,7
+Floodplain_Replicate_02;TCIALEEDSGFRK;99,7%;37,2;3,3;Carbamidomethyl (+57);1524,7;3;-3,9
+Floodplain_Replicate_02;WNVWIGLR;99,7%;40,6;1,5;;1042,6;2;1,4
+Forest_Replicate_01;TCIALEEDSGFR;99,7%;37,2;2,3;Carbamidomethyl (+57);1396,6;2;1,3
+Forest_Replicate_01;TCIALEEDSGFRK;99,7%;33,2;2,3;Carbamidomethyl (+57);1524,7;3;0,4
+Forest_Replicate_01;WNVWIGLR;99,7%;35,5;2,1;Carbamidomethyl (+57);1099,6;2;-2,3
+Forest_Replicate_01;WNVWIGLR;99,7%;41,6;0,9;;1042,6;2;-2,3
+Forest_Replicate_02;TCIALEEDSGFR;99,7%;36,2;2,1;Carbamidomethyl (+57);1396,6;2;2,0
+Forest_Replicate_02;TCIALEEDSGFRK;99,7%;33,8;3,0;Carbamidomethyl (+57);1524,7;3;-2,4
+Forest_Replicate_02;WNVWIGLR;99,7%;41,0;1,6;;1042,6;2;5,0
+Pasture_Replicate_01;TCIALEEDSGFR;99,7%;25,9;2,6;Carbamidomethyl (+57);1396,6;2;1,2
+Pasture_Replicate_01;TCIALEEDSGFRK;99,7%;40,6;0,9;Carbamidomethyl (+57), Carbamidomethyl (+57);1581,7;3;-1,8
+Pasture_Replicate_01;TCIALEEDSGFRK;99,7%;33,3;2,0;Carbamidomethyl (+57);1524,7;3;0,7
+Pasture_Replicate_01;WNVWIGLR;99,7%;41,1;1,4;;1042,6;2;-0,8
+Pasture_Replicate_02;LVAENKDSIK;99,7%;N.A.;3,0;;1115,6;2;0,2
+Pasture_Replicate_02;TCIALEEDSGFR;99,7%;49,7;0,7;Carbamidomethyl (+57);1396,6;2;4,3
+Pasture_Replicate_02;TCIALEEDSGFRK;99,7%;30,2;2,9;Carbamidomethyl (+57);1524,7;3;-0,4
+Pasture_Replicate_02;WLNLNCR;98,8%;20,5;2,3;Carbamidomethyl (+57), Carbamidomethyl (+57);1031,5;2;2,3
+Pasture_Replicate_02;WNVWIGLR;99,7%;48,3;1,0;;1042,6;2;0,2
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;

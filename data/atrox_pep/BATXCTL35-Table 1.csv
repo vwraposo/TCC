@@ -1,0 +1,147 @@
+Sample name;Peptide sequence;Identification probability;Mascot Ion score;X! Tandem -log(e) score;Modification;Calculated mass (u);Charge (z);Measured mass error (ppm)
+Degraded_Replicate_01;FCSEQAK;98,8%;14,5;2,2;Carbamidomethyl (+57);868,4;2;-2,6
+Degraded_Replicate_01;IQEFTYYVWIGLR;99,7%;24,6;2,7;;1686,9;2;1,9
+Degraded_Replicate_01;LGFVQWVNIDCVER;99,7%;32,0;2,6;Carbamidomethyl (+57);1733,9;2;-1,7
+Degraded_Replicate_01;WSDGSCVCYENLVR;99,7%;51,2;3,9;Carbamidomethyl (+57), Carbamidomethyl (+57);1743,7;2;-1,1
+Degraded_Replicate_01;YYVWIGLR;99,7%;30,3;2,8;;1068,6;2;-0,5
+Degraded_Replicate_01;FECPSDWSTHR;99,7%;N.A.;5,0;Carbamidomethyl (+57);1420,6;3;-1,2
+Degraded_Replicate_02;FECPSDWSTHR;99,7%;N.A.;3,6;Carbamidomethyl (+57);1420,6;3;0,4
+Degraded_Replicate_02;IQEFTYYVWIGLR;99,7%;37,6;5,3;;1686,9;2;1,1
+Degraded_Replicate_02;LGFVQWVNIDCVER;99,7%;30,2;2,2;Carbamidomethyl (+57);1733,9;2;1,7
+Degraded_Replicate_02;LGFVQWVNIDCVER;99,7%;38,7;2,7;Deamidated (+1), Carbamidomethyl (+57);1734,9;2;9,3
+Degraded_Replicate_02;WSDGSCVCYENLVR;99,7%;37,7;2,2;Carbamidomethyl (+57), Carbamidomethyl (+57);1743,7;2;1,3
+Degraded_Replicate_02;YYVWIGLR;99,7%;26,3;2,4;;1068,6;2;0,6
+Floodplain_Replicate_01;SWHDMNWDDAER;99,7%;15,0;3,1;Carbamidomethyl (+57), Carbamidomethyl (+57);1674,7;2;6,8
+Floodplain_Replicate_01;YYVWIGLR;99,7%;31,7;2,6;;1068,6;2;-1,2
+Floodplain_Replicate_02;FECPSDWSTHR;99,7%;N.A.;2,1;Carbamidomethyl (+57);1420,6;3;1,3
+Floodplain_Replicate_02;IQEFTYYVWIGLR;99,7%;40,5;1,1;;1686,9;2;-1,1
+Floodplain_Replicate_02;YYVWIGLR;99,7%;28,3;3,7;;1068,6;2;-4,0
+Forest_Replicate_01;FECPSDWSTHR;99,7%;N.A.;2,2;Carbamidomethyl (+57);1420,6;3;-0,9
+Forest_Replicate_01;IQEFTYYVWIGLR;99,7%;56,1;3,4;;1686,9;2;-2,2
+Forest_Replicate_01;KLGFVQWVNIDCVER;99,7%;27,9;2,9;Carbamidomethyl (+57);1862,0;3;0,5
+Forest_Replicate_01;LGFVQWVNIDCVER;99,7%;57,4;2,1;Carbamidomethyl (+57);1733,9;2;3,6
+Forest_Replicate_01;WSDGSCVCYENLVR;99,7%;72,2;4,7;Carbamidomethyl (+57), Carbamidomethyl (+57);1743,7;2;0,5
+Forest_Replicate_01;YYVWIGLR;99,7%;26,7;2,8;;1068,6;2;0,1
+Forest_Replicate_02;KLGFVQWVNIDCVER;99,7%;29,9;2,6;Carbamidomethyl (+57);1862,0;3;4,8
+Forest_Replicate_02;LGFVQWVNIDCVER;99,7%;51,0;4,4;Carbamidomethyl (+57);1733,9;2;3,5
+Forest_Replicate_02;WSDGSCVCYENLVR;99,7%;65,8;5,1;Carbamidomethyl (+57), Carbamidomethyl (+57);1743,7;2;0,5
+Forest_Replicate_02;YYVWIGLR;99,7%;26,8;2,3;;1068,6;2;5,1
+Pasture_Replicate_01;FECPSDWSTHR;99,7%;N.A.;2,7;Carbamidomethyl (+57);1420,6;3;-1,8
+Pasture_Replicate_01;IQEFTYYVWIGLR;99,4%;50,0;0,0;;1686,9;2;-9,1
+Pasture_Replicate_01;LGFVQWVNIDCVER;99,7%;41,5;4,4;Carbamidomethyl (+57);1733,9;2;-3,3
+Pasture_Replicate_01;SWHDMNWDDAER;99,7%;20,8;3,1;Carbamidomethyl (+57), Carbamidomethyl (+57);1674,7;2;6,9
+Pasture_Replicate_01;YYVWIGLR;99,7%;17,8;2,0;;1068,6;2;0,2
+Pasture_Replicate_02;IQEFTYYVWIGLR;99,7%;47,1;0,0;;1686,9;2;-8,3
+Pasture_Replicate_02;LGFVQWVNIDCVER;99,7%;42,8;4,3;Carbamidomethyl (+57);1733,9;2;3,9
+Pasture_Replicate_02;YYVWIGLR;99,7%;23,4;2,5;;1068,6;2;3,8
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;

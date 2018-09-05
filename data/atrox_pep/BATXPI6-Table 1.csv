@@ -1,0 +1,394 @@
+Sample name;Peptide sequence;Identification probability;Mascot Ion score;X! Tandem -log(e) score;Modification;Calculated mass (u);Charge (z);Measured mass error (ppm)
+Degraded_Replicate_01;GNVNDYEVVYPR;99,7%;N.A.;3,2;;1423,7;2;1,9
+Degraded_Replicate_01;KYNSNLNTIR;99,7%;38,2;2,7;;1221,7;2;-1,0
+Degraded_Replicate_01;LANLEVWSK;99,7%;N.A.;3,4;;1058,6;2;-0,5
+Degraded_Replicate_01;LVVVADHGMFK;99,7%;N.A.;3,4;;1214,7;3;0,4
+Degraded_Replicate_01;SETHYSPDGR;99,7%;N.A.;2,0;;1147,5;2;-6,3
+Degraded_Replicate_01;YNSNLNTIR;99,7%;40,5;1,2;Deamidated (+1);1094,5;2;-0,1
+Degraded_Replicate_01;YNSNLNTIR;99,7%;39,2;2,9;;1093,6;2;-0,7
+Degraded_Replicate_01;YNSNLNTIR;99,7%;44,8;1,1;Carbamidomethyl (+57);1150,6;2;0,6
+Degraded_Replicate_02;GNVNDYEVVYPR;99,7%;N.A.;2,1;;1423,7;2;3,1
+Degraded_Replicate_02;KYNSNLNTIR;99,7%;40,7;2,5;;1221,7;2;0,3
+Degraded_Replicate_02;SETHYSPDGR;99,7%;N.A.;2,3;;1147,5;3;1,5
+Degraded_Replicate_02;YNSNLNTIR;99,7%;51,0;1,0;Deamidated (+1);1094,5;2;-0,8
+Degraded_Replicate_02;YNSNLNTIR;99,7%;35,5;2,4;Carbamidomethyl (+57);1150,6;2;-0,2
+Degraded_Replicate_02;YNSNLNTIR;99,7%;42,0;2,7;;1093,6;2;0,6
+Floodplain_Replicate_01;GNVNDYEVVYPR;99,7%;N.A.;2,3;;1423,7;2;2,8
+Floodplain_Replicate_01;KYNSNLNTIR;99,7%;43,5;1,9;Carbamidomethyl (+57);1278,7;3;0,9
+Floodplain_Replicate_01;LANLEVWSK;99,7%;N.A.;2,2;;1058,6;2;-0,7
+Floodplain_Replicate_01;LVVVADHGMFK;99,7%;N.A.;5,5;;1214,7;2;-1,4
+Floodplain_Replicate_01;YNSNLNTIR;99,7%;50,4;1,6;Deamidated (+1);1094,5;2;0,8
+Floodplain_Replicate_01;YNSNLNTIR;99,7%;26,0;2,1;Carbamidomethyl (+57);1150,6;2;-0,5
+Floodplain_Replicate_01;YNSNLNTIR;99,7%;34,6;2,0;;1093,6;2;-0,9
+Floodplain_Replicate_01;YNSNLNTIR;99,7%;54,7;2,6;Carbamidomethyl (+57), Deamidated (+1);1151,6;2;1,0
+Floodplain_Replicate_02;GNVNDYEVVYPR;99,7%;N.A.;2,3;;1423,7;2;0,7
+Floodplain_Replicate_02;KYNSNLNTIR;99,7%;42,1;1,1;;1221,7;2;0,7
+Floodplain_Replicate_02;LANLEVWSK;99,7%;N.A.;2,1;;1058,6;2;1,8
+Floodplain_Replicate_02;SETHYSPDGR;99,7%;N.A.;2,3;;1147,5;3;2,3
+Floodplain_Replicate_02;YNSNLNTIR;99,7%;41,2;1,5;Deamidated (+1);1094,5;2;3,5
+Floodplain_Replicate_02;YNSNLNTIR;99,7%;17,2;2,4;Carbamidomethyl (+57);1150,6;2;3,3
+Floodplain_Replicate_02;YNSNLNTIR;99,7%;39,3;3,1;;1093,6;2;1,6
+Forest_Replicate_01;KYNSNLNTIR;99,7%;35,5;2,7;;1221,6;2;-1,8
+Forest_Replicate_01;LANLEVWSK;99,7%;N.A.;2,7;;1058,6;2;-0,0
+Forest_Replicate_01;LVVVADHGMFK;99,7%;N.A.;2,1;;1214,7;3;0,8
+Forest_Replicate_01;YNSNLNTIR;99,7%;50,6;1,0;Deamidated (+1);1094,5;2;0,3
+Forest_Replicate_01;YNSNLNTIR;99,7%;32,1;2,0;Carbamidomethyl (+57);1150,6;2;-0,7
+Forest_Replicate_01;YNSNLNTIR;99,7%;44,6;2,9;;1093,6;2;-0,7
+Forest_Replicate_02;LANLEVWSK;99,7%;N.A.;2,1;;1058,6;2;6,4
+Forest_Replicate_02;YNSNLNTIR;99,7%;35,2;2,7;Carbamidomethyl (+57);1150,6;2;2,0
+Forest_Replicate_02;YNSNLNTIR;99,7%;42,4;2,7;;1093,6;2;2,2
+Forest_Replicate_02;YNSNLNTIR;99,7%;49,4;1,4;Deamidated (+1);1094,5;2;0,4
+Pasture_Replicate_01;DLINVQK;98,8%;38,1;2,2;Carbamidomethyl (+57);885,5;2;-0,9
+Pasture_Replicate_01;DLLPHISHDNAQLLTTTVFDK;99,7%;46,5;-0,2;Carbamidomethyl (+57);2434,3;3;3,2
+Pasture_Replicate_01;DLLPHISHDNAQLLTTTVFDK;99,7%;51,0;1,3;Deamidated (+1);2378,2;3;0,7
+Pasture_Replicate_01;DLLPHISHDNAQLLTTTVFDK;99,7%;56,5;1,7;;2377,2;3;3,6
+Pasture_Replicate_01;ERDLLPHISHDNAQLLTTTVFDK;99,7%;43,2;3,3;;2662,4;3;2,0
+Pasture_Replicate_01;HIELVVVADHGMFK;99,7%;24,8;6,2;Carbamidomethyl (+57), Dethiomethyl (-48);1602,9;3;-1,7
+Pasture_Replicate_01;HIELVVVADHGMFK;99,7%;25,0;2,7;;1593,8;3;3,0
+Pasture_Replicate_01;HIELVVVADHGMFK;99,7%;26,5;2,2;Carbamidomethyl (+57);1650,9;3;0,1
+Pasture_Replicate_01;HIELVVVADHGMFK;99,7%;41,4;3,7;Dethiomethyl (-48);1545,8;3;-3,9
+Pasture_Replicate_01;ISHDNAQLLTTTVFDK;99,7%;N.A.;5,1;;1801,9;3;-0,3
+Pasture_Replicate_01;KDLINVQK;99,7%;23,3;2,3;Carbamidomethyl (+57);1013,6;2;-1,7
+Pasture_Replicate_01;KDLINVQK;99,7%;42,4;1,9;;956,6;2;-2,4
+Pasture_Replicate_01;KYNSNLNTIR;99,7%;23,0;2,4;;1221,6;2;-1,5
+Pasture_Replicate_01;KYNSNLNTIR;99,7%;45,0;1,8;Carbamidomethyl (+57);1278,7;2;0,0
+Pasture_Replicate_01;LANLEVWSK;99,7%;N.A.;2,3;;1058,6;2;2,6
+Pasture_Replicate_01;QSVGVVMDHSK;99,7%;13,3;2,4;Dethiomethyl (-48);1137,6;3;0,0
+Pasture_Replicate_01;QSVGVVMDHSK;99,7%;13,7;2,0;;1185,6;3;-1,4
+Pasture_Replicate_01;QSVGVVMDHSK;99,7%;N.A.;5,4;Ammonia-loss (-17);1168,6;2;0,1
+Pasture_Replicate_01;QSVGVVMDHSK;99,7%;35,0;2,9;Dethiomethyl (-48), Carbamidomethyl (+57);1194,6;3;-1,6
+Pasture_Replicate_01;SETHYSPDGR;99,7%;N.A.;2,7;;1147,5;3;-0,5
+Pasture_Replicate_01;YNSNLNTIR;99,7%;40,5;1,4;Deamidated (+1);1094,5;2;0,3
+Pasture_Replicate_01;YNSNLNTIR;99,7%;41,8;1,9;;1093,6;2;-1,4
+Pasture_Replicate_01;YNSNLNTIR;99,7%;50,5;1,6;Carbamidomethyl (+57);1150,6;2;0,8
+Pasture_Replicate_02;DLLPHISHDNAQLLTTTVFDK;99,7%;12,6;2,5;;2377,2;2;-0,0
+Pasture_Replicate_02;DLLPHISHDNAQLLTTTVFDK;99,7%;26,6;2,2;Carbamidomethyl (+57);2434,3;3;4,4
+Pasture_Replicate_02;ERDLLPHISHDNAQLLTTTVFDK;99,7%;44,2;-0,4;Carbamidomethyl (+57);2719,4;4;7,2
+Pasture_Replicate_02;ERDLLPHISHDNAQLLTTTVFDK;99,7%;45,8;0,0;;2662,4;4;0,2
+Pasture_Replicate_02;HIELVVVADHGMFK;99,7%;12,2;2,2;Carbamidomethyl (+57);1650,9;3;0,2
+Pasture_Replicate_02;HIELVVVADHGMFK;99,7%;24,3;4,2;;1593,8;3;2,0
+Pasture_Replicate_02;HIELVVVADHGMFK;99,7%;25,7;3,8;Carbamidomethyl (+57), Dethiomethyl (-48);1602,9;3;-0,9
+Pasture_Replicate_02;HIELVVVADHGMFK;99,7%;35,0;5,1;Dethiomethyl (-48);1545,8;3;-0,3
+Pasture_Replicate_02;KDLINVQK;99,7%;17,6;2,2;Carbamidomethyl (+57), Carbamidomethyl (+57);1070,6;2;1,5
+Pasture_Replicate_02;KDLINVQK;99,7%;18,9;2,0;Carbamidomethyl (+57);1013,6;2;0,3
+Pasture_Replicate_02;KDLINVQK;99,7%;42,2;0,2;;956,6;3;1,3
+Pasture_Replicate_02;KYNSNLNTIR;99,7%;41,5;0,0;Carbamidomethyl (+57);1278,7;2;1,5
+Pasture_Replicate_02;KYNSNLNTIR;99,7%;27,0;2,8;Deamidated (+1);1222,6;2;0,2
+Pasture_Replicate_02;LANLEVWSK;99,7%;N.A.;3,5;;1058,6;2;2,8
+Pasture_Replicate_02;QSVGVVMDHSK;99,7%;25,0;2,2;Dethiomethyl (-48);1137,6;3;2,0
+Pasture_Replicate_02;QSVGVVMDHSK;99,7%;26,5;2,1;Dethiomethyl (-48), Carbamidomethyl (+57);1194,6;3;0,8
+Pasture_Replicate_02;QSVGVVMDHSK;99,7%;N.A.;6,9;Ammonia-loss (-17);1168,6;2;1,3
+Pasture_Replicate_02;QSVGVVMDHSK;99,7%;38,5;3,0;;1185,6;3;2,9
+Pasture_Replicate_02;SETHYSPDGR;99,7%;N.A.;3,0;;1147,5;3;2,0
+Pasture_Replicate_02;SLANLEVWSK;99,7%;N.A.;4,6;;1145,6;2;1,4
+Pasture_Replicate_02;YNSNLNTIR;99,7%;53,4;1,3;Deamidated (+1);1094,5;2;1,1
+Pasture_Replicate_02;YNSNLNTIR;99,7%;24,5;2,4;Carbamidomethyl (+57);1150,6;2;3,3
+Pasture_Replicate_02;YNSNLNTIR;99,7%;35,7;2,1;Deamidated (+1), Deamidated (+1);1095,5;2;4,8
+Pasture_Replicate_02;YNSNLNTIR;99,7%;39,7;2,4;;1093,6;2;1,9
+Pasture_Replicate_02;YNSNLNTIR;99,7%;42,7;2,8;Carbamidomethyl (+57), Deamidated (+1);1151,6;2;4,3
+Pasture_Replicate_02;YNSNLNTIRK;99,7%;17,8;3,3;;1221,7;2;-0,4
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;

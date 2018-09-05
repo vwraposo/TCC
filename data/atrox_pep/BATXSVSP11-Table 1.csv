@@ -1,0 +1,27 @@
+Sample name;Peptide sequence;Identification probability;Mascot Ion score;X! Tandem -log(e) score;Modification;Calculated mass (u);Charge (z);Measured mass error (ppm)
+Degraded_Replicate_01;FFCLSSK;98,8%;23,8;2,1;Carbamidomethyl (+57);887,4;2;0,5
+Degraded_Replicate_01;FFCLSSK;98,8%;24,6;2,7;Carbamidomethyl (+57), Carbamidomethyl (+57);944,5;2;2,6
+Degraded_Replicate_02;FFCLSSK;98,8%;9,6;4,1;Carbamidomethyl (+57), Carbamidomethyl (+57);944,5;2;3,6
+Floodplain_Replicate_01;FFCLSSK;98,8%;22,8;2,3;Carbamidomethyl (+57);887,4;2;1,1
+Floodplain_Replicate_01;FFCLSSK;98,8%;25,3;2,2;Carbamidomethyl (+57), Carbamidomethyl (+57);944,4;2;0,5
+Floodplain_Replicate_01;LDSSVSNSPHIAPLSLPSSPPSVGSLCR;99,7%;29,9;4,6;Carbamidomethyl (+57);2860,4;3;0,9
+Floodplain_Replicate_01;LSLPSSPPSVGSLCR;99,7%;N.A.;3,2;Carbamidomethyl (+57);1555,8;2;4,1
+Floodplain_Replicate_02;FFCLSSK;98,8%;21,0;3,1;Carbamidomethyl (+57), Carbamidomethyl (+57);944,4;2;0,6
+Floodplain_Replicate_02;LDSSVSNSPHIAPLSLPSSPPSVGSLCR;99,7%;53,0;3,0;Carbamidomethyl (+57);2860,5;3;3,3
+Floodplain_Replicate_02;TLCAGVLQGGK;99,7%;27,9;2,7;Carbamidomethyl (+57);1102,6;2;2,6
+Forest_Replicate_01;FFCLSSK;98,8%;15,9;3,1;Carbamidomethyl (+57), Carbamidomethyl (+57);944,4;2;0,8
+Forest_Replicate_01;FFCLSSK;98,8%;22,9;2,9;Carbamidomethyl (+57);887,4;2;-0,3
+Pasture_Replicate_01;FFCLSSK;98,8%;15,6;3,5;Carbamidomethyl (+57), Carbamidomethyl (+57);944,4;2;-0,6
+Pasture_Replicate_01;FFCLSSK;98,8%;19,9;2,5;Carbamidomethyl (+57);887,4;2;-0,2
+Pasture_Replicate_02;FFCLSSK;98,8%;10,8;4,7;Carbamidomethyl (+57), Carbamidomethyl (+57);944,4;2;2,3
+Pasture_Replicate_02;FFCLSSK;98,8%;26,7;2,4;Carbamidomethyl (+57);887,4;2;2,1
+Pasture_Replicate_02;LQGIVSWGAHPCGR;99,7%;11,5;2,3;Carbamidomethyl (+57);1536,8;3;-2,3
+Pasture_Replicate_02;TLCAGVLQGGK;99,7%;17,3;2,0;Carbamidomethyl (+57);1102,6;2;3,1
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
