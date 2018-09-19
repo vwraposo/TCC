@@ -154,8 +154,10 @@ def _getPeptides(typ=''):
         where =  "WHERE pep_id IN (SELECT DISTINCT pe.pep_id \
                     FROM pep_pr AS pe, proteins AS pr \
                     WHERE pe.pr_acc = pr.pr_acc AND pr.pr_T = 1)"
+        db = "peptides"
     else:
         where = ""
+        db = "all_peptides"
 
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
@@ -183,7 +185,7 @@ def _getPeptides(typ=''):
     uf = UnionFind(n_pep)
     
     out_file = tempfile.NamedTemporaryFile()
-    blastp_cline = NcbiblastpCommandline(query="../data/blast/peptides.faa", db="../data/blast/db/blast/peptides", evalue=MIN_EVALUE, threshold=MIN_SCORE, max_target_seqs=MAX_HITS, num_threads = 3, outfmt=5, out=out_file.name)
+    blastp_cline = NcbiblastpCommandline(query="../data/blast/{0}.faa".format(db), db="../data/blast/db/{0}".format(db), evalue=MIN_EVALUE, threshold=MIN_SCORE, max_target_seqs=MAX_HITS, num_threads = 3, outfmt=5, out=out_file.name)
     print("BLAST started....")
     blastp_cline()
     print("BLAST completed.")
@@ -198,11 +200,10 @@ def _getPeptides(typ=''):
             pid_r = int(al.title.split()[-1])
             len_r = al.length
             if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
-                # if (pid_t not in dic): 
-                    # print("Error: BLAST database not congruent with local database")
-                    # sys.exit(1)
-                # if (pid_r in dic):
-                if (pid_t in dic) and (pid_r in dic):
+                if (pid_t not in dic): 
+                    print("Error: BLAST database not congruent with local database")
+                    sys.exit(1)
+                if (pid_r in dic):
                     uf.union (dic[pid_t], dic[pid_r])
                 break
 
