@@ -49,11 +49,12 @@ class CreateInput(cmd.Cmd):
         conn.close()
 
         ## Standard
-        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein', 'peptides', 'glycans']
+        self.charset['Standard'] = ['protein', 'lec_protein', 'all_protein', 'peptides', 'all_peptides', 'glycans']
         self.selected['protein'] = False 
         self.selected['lec_protein'] = False 
         self.selected['all_protein'] = False 
         self.selected['peptides'] = False 
+        self.selected['all_peptides'] = False 
         self.selected['glycans'] = False
 
         self.do_list("")

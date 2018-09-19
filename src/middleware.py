@@ -72,7 +72,7 @@ def getStandard(chset):
         return _getProteins('TL') 
     elif chset == 'peptides':
         return _getPeptides('T')
-    elif chset == 'lec_peptides':
+    elif chset == 'all_peptides':
         return _getPeptides()
     elif chset == 'glycans':
         return _getGlycans()
@@ -166,7 +166,7 @@ def _getPeptides(typ=''):
 
     try:
 
-        cur.execute("SELECT DISTINCT pep_id FROM pep_sn {0};".format(where))
+        cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are not peptides in the database.")
             raise Exception
@@ -175,7 +175,12 @@ def _getPeptides(typ=''):
         conn.rollback()
         print("Rollback complete")
 
-    peptides = [tup[0] for tup in cur]
+    peptides = []
+    snakes = []
+    for tup in cur:
+        peptides.append(tup[0])
+        snakes.append(tup[1])
+
     n_pep = len(peptides)
     dic = dict(zip(peptides, range(n_pep)))
     dicI = dict(zip(range(n_pep), peptides))
@@ -207,7 +212,7 @@ def _getPeptides(typ=''):
                 break
 
 
-    peptides = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
+    classes = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
 
     # try:
         # cur.execute("SELECT DISTINCT pep FROM pep_sn;")
@@ -220,14 +225,12 @@ def _getPeptides(typ=''):
         # print("Rollback complete")
 
     records = dict()
-    for tup in cur: 
-        if tup[1] not in records:
-            records[tup[1]] = [str(0)] * len(peptides)  
+    for i in range(n_pep): 
+        if snakes[i] not in records:
+            records[snakes[i]] = [str(0)] * n_pep
        
-        if (tup[0] not in dic):
-            print("ERIOURUEI: " + str(tup[0]))
-        f = dicI[uf.find(dic[tup[0]])]
-        records[tup[1]][peptides.index(f)] = str(1)
+        f = dicI[uf.find(dic[peptides[i]])]
+        records[snakes[i]][classes.index(f)] = str(1)
 
     out_file.close()
     cur.close()
@@ -277,4 +280,3 @@ def _getGlycans():
     
 
     return records
-
