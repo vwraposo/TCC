@@ -142,3 +142,26 @@ CREATE TABLE eating (
 );
 
 
+-- Tables for Atrox snakes
+
+CREATE TABLE atrox (
+  at_id serial,  
+  at_habitat varchar(100) not NULL, 
+  at_replicate integer not NULL, 
+  CONSTRAINT pk_at PRIMARY KEY (at_id)
+);
+
+CREATE TABLE pep_at (
+  pep_id integer, 
+  at_id integer, 
+  CONSTRAINT fk_at FOREIGN KEY (at_id)
+    REFERENCES atrox(at_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_pep FOREIGN KEY (pep_id)
+    REFERENCES peptides(pep_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT pk_pep_at UNIQUE (pep_id, at_id)
+);
+
