@@ -71,6 +71,8 @@ def getStandard(chset):
     elif chset == 'all_protein':
         return _getProteins('TL') 
     elif chset == 'peptides':
+        return _getPeptides('T')
+    elif chset == 'lec_peptides':
         return _getPeptides()
     elif chset == 'glycans':
         return _getGlycans()
@@ -81,9 +83,9 @@ def getStandard(chset):
 # Returns the proteic data from the database in a standard form 
 def _getProteins(typ):
     if typ == 'T':
-        where = 'WHERE pr_T = 1' 
+        where = 'WHERE pr.pr_acc = r.pr_acc AND pr.pr_T = 1' 
     elif typ == 'L':
-        where = 'WHERE pr_WGA = 1 OR pr_ConA = 1 OR pr_PNA = 1'
+        where = 'WHERE pr.pr_acc = r.pr_acc AND (pr.pr_WGA = 1 OR pr.pr_ConA = 1 OR pr.pr_PNA = 1)'
     elif typ == 'TL':
         where = ''
     else:
@@ -98,7 +100,7 @@ def _getProteins(typ):
 
     cur = conn.cursor()
     try:
-        cur.execute("SELECT DISTINCT pr_acc FROM proteins {0};".format(where))
+        cur.execute("SELECT DISTINCT r.pr_acc FROM pr_sn AS r, proteins AS pr {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are not proteins in the database.")
             raise Exception
@@ -142,12 +144,18 @@ def _getProteins(typ):
     return records
 
 # Returns the proteic data from the database in a binary form 
-def _getPeptides():
+def _getPeptides(typ=''):
     MAX_DIFF = 2
     MAX_HITS = 5
     MIN_SCORE = 20 
     MIN_EVALUE = 1e-05
 
+    if typ == "T":
+        where =  "WHERE pep_id IN (SELECT DISTINCT pe.pep_id \
+                    FROM pep_pr AS pe, proteins AS pr \
+                    WHERE pe.pr_acc = pr.pr_acc AND pr.pr_T = 1)"
+    else:
+        where = ""
 
     try:
         conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
@@ -157,7 +165,8 @@ def _getPeptides():
     cur = conn.cursor()
 
     try:
-        cur.execute("SELECT DISTINCT pep_id FROM peptides;")
+
+        cur.execute("SELECT DISTINCT pep_id FROM pep_sn {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are not peptides in the database.")
             raise Exception
@@ -189,30 +198,34 @@ def _getPeptides():
             pid_r = int(al.title.split()[-1])
             len_r = al.length
             if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
-                if (pid_t not in dic) or (pid_r not in dic):
-                    print("Error: BLAST database not congruent with local database")
-                    sys.exit(1)
-                uf.union (dic[pid_t], dic[pid_r])
+                # if (pid_t not in dic): 
+                    # print("Error: BLAST database not congruent with local database")
+                    # sys.exit(1)
+                # if (pid_r in dic):
+                if (pid_t in dic) and (pid_r in dic):
+                    uf.union (dic[pid_t], dic[pid_r])
                 break
 
 
     peptides = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
 
-    try:
-        cur.execute("SELECT DISTINCT * FROM pep_sn;")
-        if cur.rowcount == 0:
-            print("Eror: there are not peptides related to species in the database.")
-            raise Exception
-    except psycopg2.ProgrammingError as e:
-        print(e)
-        conn.rollback()
-        print("Rollback complete")
+    # try:
+        # cur.execute("SELECT DISTINCT pep FROM pep_sn;")
+        # if cur.rowcount == 0:
+            # print("Eror: there are not peptides related to species in the database.")
+            # raise Exception
+    # except psycopg2.ProgrammingError as e:
+        # print(e)
+        # conn.rollback()
+        # print("Rollback complete")
 
     records = dict()
     for tup in cur: 
         if tup[1] not in records:
             records[tup[1]] = [str(0)] * len(peptides)  
-        
+       
+        if (tup[0] not in dic):
+            print("ERIOURUEI: " + str(tup[0]))
         f = dicI[uf.find(dic[tup[0]])]
         records[tup[1]][peptides.index(f)] = str(1)
 
@@ -232,7 +245,7 @@ def _getGlycans():
 
     cur = conn.cursor()
     try:
-        cur.execute("SELECT DISTINCT gl_id FROM glycans;")
+        cur.execute("SELECT DISTINCT gl_id FROM gl_sn;")
         if cur.rowcount == 0:
             print("Error: there are not glycans in the database.")
             raise Exception
