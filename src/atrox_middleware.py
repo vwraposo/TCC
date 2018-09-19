@@ -10,7 +10,7 @@ from UF import UnionFind
 from Bio.Blast.Applications import NcbiblastpCommandline
 from Bio.Blast import NCBIXML
 
-def _getPeptides(typ=''):
+def getPeptides(typ=''):
     MAX_DIFF = 2
     MAX_HITS = 5
     MIN_SCORE = 20 
