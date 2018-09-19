@@ -10,7 +10,7 @@ import os
 dirname = '../input/'
 directory = os.fsencode(dirname)
 
-mith = dirname + 'mithocondrial/mithocondrial.nex.con.tre'
+mith = dirname + 'genomic/genomic.nex.con.tre'
 
 # Compare with others 
 
@@ -18,7 +18,7 @@ print("Report comparing topology using the CADM test of the resulting trees with
 print(30*("-"))
 for d in os.listdir(directory):
     dname = os.fsdecode(d)
-    if (not os.path.isdir(dirname + dname)) or (dname == 'mithocondrial') or (dname == 'extras'):
+    if (not os.path.isdir(dirname + dname)) or (dname == 'genomic') or (dname == 'extras'):
         continue
     print('Target: ' + dname)
     tree = '{0}{1}/{1}.nex.con.tre'.format(dirname, dname)
