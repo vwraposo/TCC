@@ -1,8 +1,4 @@
 [
-  "test_middleware.py::test_answer",
-  "test_middleware.py::test_error",
-  "test_middleware.py::test_getProteinError",
-  "test_middleware.py::test_getProteins",
-  "test_middleware.py::test_getPeptides",
-  "test_middleware.py::test_getGlycans"
+  "test_atrox_middleware.py::test_getPeptidesData",
+  "test_atrox_middleware.py::test_getPeptidesTypes"
 ]
