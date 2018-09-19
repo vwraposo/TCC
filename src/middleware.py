@@ -166,7 +166,7 @@ def _getPeptides(typ=''):
 
     try:
 
-        cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
+        cur.execute("SELECT DISTINCT pep_id FROM pep_sn {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are not peptides in the database.")
             raise Exception
@@ -175,12 +175,7 @@ def _getPeptides(typ=''):
         conn.rollback()
         print("Rollback complete")
 
-    peptides = []
-    snakes = []
-    for tup in cur:
-        peptides.append(tup[0])
-        snakes.append(tup[1])
-
+    peptides = [tup[0] for tup in cur]
     n_pep = len(peptides)
     dic = dict(zip(peptides, range(n_pep)))
     dicI = dict(zip(range(n_pep), peptides))
@@ -212,25 +207,25 @@ def _getPeptides(typ=''):
                 break
 
 
-    classes = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
+    classes  = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
 
-    # try:
-        # cur.execute("SELECT DISTINCT pep FROM pep_sn;")
-        # if cur.rowcount == 0:
-            # print("Eror: there are not peptides related to species in the database.")
-            # raise Exception
-    # except psycopg2.ProgrammingError as e:
-        # print(e)
-        # conn.rollback()
-        # print("Rollback complete")
+    try:
+        cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
+        if cur.rowcount == 0:
+            print("Eror: there are not peptides related to species in the database.")
+            raise Exception
+    except psycopg2.ProgrammingError as e:
+        print(e)
+        conn.rollback()
+        print("Rollback complete")
 
     records = dict()
-    for i in range(n_pep): 
-        if snakes[i] not in records:
-            records[snakes[i]] = [str(0)] * n_pep
-       
-        f = dicI[uf.find(dic[peptides[i]])]
-        records[snakes[i]][classes.index(f)] = str(1)
+    for tup in cur: 
+        if tup[1] not in records:
+            records[tup[1]] = [str(0)] * len(classes)  
+        
+        f = dicI[uf.find(dic[tup[0]])]
+        records[tup[1]][classes.index(f)] = str(1) 
 
     out_file.close()
     cur.close()
