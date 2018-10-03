@@ -234,16 +234,16 @@ def _getPeptides(typ=''):
         records[tup[1]][classes.index(f)] = str(1) 
 
     ## Creating a file with the id of the class representative
-    with  open("character_file.nex", "a") as f:
-        f.write("{0};\n".format(len(classes)))
-        f.write("CHARSTATELABELS\n")
-        for i in range(len(classes)-1):
-            f.write("{0} {1}, ".format(str(i+1), classes[i]))
-        f.write("{0} {1} ;\n".format(str(len(classes)), classes[-1]))
-        f.write("MATRIX\n")
-        for sn in records:
-            f.write("{0} {1}\n".format(str(sn), ''.join(records[sn])))
-        f.write(";\nEND;")
+    # with  open("character_file.nex", "a") as f:
+        # f.write("{0};\n".format(len(classes)))
+        # f.write("CHARSTATELABELS\n")
+        # for i in range(len(classes)-1):
+            # f.write("{0} {1}, ".format(str(i+1), classes[i]))
+        # f.write("{0} {1} ;\n".format(str(len(classes)), classes[-1]))
+        # f.write("MATRIX\n")
+        # for sn in records:
+            # f.write("{0} {1}\n".format(str(sn), ''.join(records[sn])))
+        # f.write(";\nEND;")
 
     out_file.close()
     cur.close()
@@ -295,4 +295,3 @@ def _getGlycans():
     return records
 
 
-_getPeptides()
