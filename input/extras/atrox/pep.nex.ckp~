@@ -1,0 +1,99 @@
+#NEXUS
+[ID: 6187403103]
+[generation: 28998000]
+
+begin trees;
+	translate
+       1 Degraded,
+       2 Floodplain,
+       3 Forest,
+       4 Pasture;
+	tree mcmc.tree_1 = (3:4.040124382680539e+00,(2:1.555830817235680e+00,4:9.367355758340500e+00):2.114962745820289e+00,1:2.648116482040810e+00);
+	tree mcmc.tree_2 = ((4:7.654520341397962e+00,2:2.323038893045148e+00):1.588419635321741e+00,3:2.761591370105804e+00,1:2.525138250494472e+00);
+	tree mcmc.tree_3 = ((2:3.285884105156791e-01,4:1.437488467049331e+00):2.890662590818314e-01,3:4.647518276742096e-01,1:4.149886991135922e-01);
+	tree mcmc.tree_4 = (3:9.785306984969750e-01,(2:7.452771163397158e-01,4:2.579523929057010e+00):1.055249315233767e-01,1:6.497009122872072e-01);
+	tree mcmc.tree_5 = ((2:2.016464778458941e-01,4:1.150496048870969e+00):1.526298803686724e-01,3:2.142891948743977e-01,1:2.757260435963534e-01);
+	tree mcmc.tree_6 = ((4:2.465954760930742e+00,2:7.785429096260947e-01):4.932614628233764e-01,3:8.418717409071289e-01,1:8.660233157401627e-01);
+	tree mcmc.tree_7 = (3:1.668062348438951e+00,(2:1.386300451297337e+00,4:3.800149980882979e+00):9.267893015367858e-01,1:1.321363684617029e+00);
+	tree mcmc.tree_8 = ((4:7.768488652728863e+00,2:1.739385954879386e+00):2.756687227223698e+00,3:1.800097876936763e+00,1:4.367325432683686e+00);
+end;
+
+begin mrbayes;
+	startvals
+		Tau(1,4)=mcmc.tree_1
+		Tau(1,2)=mcmc.tree_2
+		Tau(1,1)=mcmc.tree_3
+		Tau(1,3)=mcmc.tree_4
+		Tau(2,2)=mcmc.tree_5
+		Tau(2,4)=mcmc.tree_6
+		Tau(2,1)=mcmc.tree_7
+		Tau(2,3)=mcmc.tree_8
+		V(1,4)=mcmc.tree_1
+		V(1,2)=mcmc.tree_2
+		V(1,1)=mcmc.tree_3
+		V(1,3)=mcmc.tree_4
+		V(2,2)=mcmc.tree_5
+		V(2,4)=mcmc.tree_6
+		V(2,1)=mcmc.tree_7
+		V(2,3)=mcmc.tree_8
+		Alpha(1,4)=(1.733449635014313e+00)
+		Alpha(1,2)=(5.871070200650095e-01)
+		Alpha(1,1)=(2.190152741450439e-01)
+		Alpha(1,3)=(5.069089962503316e-01)
+		Alpha(2,2)=(4.721688877854865e-01)
+		Alpha(2,4)=(9.437298053743955e-01)
+		Alpha(2,1)=(3.340706110877430e+00)
+		Alpha(2,3)=(1.143161416434080e+00)
+		Ratemultiplier(1,4)=(4.622329756660590e-02)
+		Ratemultiplier(1,2)=(3.823856546652527e-02)
+		Ratemultiplier(1,1)=(1.289024542474836e-01)
+		Ratemultiplier(1,3)=(2.959975174790597e-01)
+		Ratemultiplier(2,2)=(9.889852480183950e-01)
+		Ratemultiplier(2,4)=(1.024313683440081e-01)
+		Ratemultiplier(2,1)=(1.197141565038520e-01)
+		Ratemultiplier(2,3)=(6.616555176057734e-02)
+	;
+	propset
+		Multiplier(Alpha)$lambda(1,4)=8.334693349649708e+00
+		Multiplier(Alpha)$lambda(1,2)=7.318656148451415e+00
+		Multiplier(Alpha)$lambda(1,1)=6.755971124218558e+00
+		Multiplier(Alpha)$lambda(1,3)=8.007885348916547e+00
+		Multiplier(Alpha)$lambda(2,2)=7.245834303041650e+00
+		Multiplier(Alpha)$lambda(2,4)=7.849318595000606e+00
+		Multiplier(Alpha)$lambda(2,1)=7.392209865574926e+00
+		Multiplier(Alpha)$lambda(2,3)=7.617336171917595e+00
+		Dirichlet(Ratemultiplier)$alpha(1,4)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(1,2)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(1,1)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(1,3)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(2,2)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(2,4)=9.917171270467945e+03
+		Dirichlet(Ratemultiplier)$alpha(2,1)=9.818493767588816e+03
+		Dirichlet(Ratemultiplier)$alpha(2,3)=9.917171270467945e+03
+		Slider(Ratemultiplier)$delta(1,4)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(1,2)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(1,1)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(1,3)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(2,2)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(2,4)=9.942841245782175e-01
+		Slider(Ratemultiplier)$delta(2,1)=9.843908322381013e-01
+		Slider(Ratemultiplier)$delta(2,3)=9.942841245782175e-01
+		Multiplier(V)$lambda(1,4)=3.656967528950123e+00
+		Multiplier(V)$lambda(1,2)=3.375806504179001e+00
+		Multiplier(V)$lambda(1,1)=3.116262166245960e+00
+		Multiplier(V)$lambda(1,3)=3.730843173469249e+00
+		Multiplier(V)$lambda(2,2)=3.444002319234455e+00
+		Multiplier(V)$lambda(2,4)=3.806211205003002e+00
+		Multiplier(V)$lambda(2,1)=3.116262166245960e+00
+		Multiplier(V)$lambda(2,3)=3.584554720202793e+00
+		TLMultiplier(V)$lambda(1,4)=3.513575781138245e+00
+		TLMultiplier(V)$lambda(1,2)=3.179214837878809e+00
+		TLMultiplier(V)$lambda(1,1)=2.994071778959059e+00
+		TLMultiplier(V)$lambda(1,3)=3.375806504179000e+00
+		TLMultiplier(V)$lambda(2,2)=3.179214837878809e+00
+		TLMultiplier(V)$lambda(2,4)=3.656967528950122e+00
+		TLMultiplier(V)$lambda(2,1)=2.763876601412021e+00
+		TLMultiplier(V)$lambda(2,3)=3.243439237836906e+00
+	;
+end;
+
