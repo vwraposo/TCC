@@ -238,8 +238,8 @@ def _getPeptides(typ=''):
         f.write("{0};\n".format(len(classes)))
         f.write("CHARSTATELABELS\n")
         for i in range(len(classes)-1):
-            f.write("{0} {1} / absent present, ".format(str(i+1), classes[i]))
-        f.write("{0} {1} / absent present ;\n".format(str(len(classes)), classes[-1]))
+            f.write("{0} {1}, ".format(str(i+1), classes[i]))
+        f.write("{0} {1} ;\n".format(str(len(classes)), classes[-1]))
         f.write("MATRIX\n")
         for sn in records:
             f.write("{0} {1}\n".format(str(sn), ''.join(records[sn])))
