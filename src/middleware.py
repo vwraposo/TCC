@@ -179,7 +179,11 @@ def _getPeptides(typ=''):
 
     peptides = [tup[0] for tup in cur]
     n_pep = len(peptides)
+
+    # pep_id -> uf_id
     dic = dict(zip(peptides, range(n_pep)))
+
+    # uf_id -> pep_id
     dicI = dict(zip(range(n_pep), peptides))
     
     uf = UnionFind(n_pep)
@@ -210,6 +214,7 @@ def _getPeptides(typ=''):
 
     classes  = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
 
+
     try:
         cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
         if cur.rowcount == 0:
@@ -227,6 +232,18 @@ def _getPeptides(typ=''):
         
         f = dicI[uf.find(dic[tup[0]])]
         records[tup[1]][classes.index(f)] = str(1) 
+
+    ## Creating a file with the id of the class representative
+    with  open("character_file.nex", "a") as f:
+        f.write("{0};\n".format(len(classes)))
+        f.write("CHARSTATELABELS\n")
+        for i in range(len(classes)-1):
+            f.write("{0} {1} / absent present, ".format(str(i+1), classes[i]))
+        f.write("{0} {1} / absent present ;\n".format(str(len(classes)), classes[-1]))
+        f.write("MATRIX\n")
+        for sn in records:
+            f.write("{0} {1}\n".format(str(sn), ''.join(records[sn])))
+        f.write(";\nEND;")
 
     out_file.close()
     cur.close()
@@ -276,3 +293,6 @@ def _getGlycans():
     
 
     return records
+
+
+_getPeptides()
