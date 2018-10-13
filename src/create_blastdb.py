@@ -49,11 +49,10 @@ queries = {}
 queries["all_peptides"] = "SELECT DISTINCT p.pep_id, p.pep_seq \
                         FROM peptides AS p, pep_sn AS r \
                         WHERE p.pep_id = r.pep_id;"
-queries["peptides"] = "SELECT DISTINCT pep_id, pep_seq \
-                        FROM peptides \
-                        WHERE pep_id IN (SELECT r.pep_id \
-                                            FROM pep_pr AS r, proteins AS pr \
-                                            WHERE r.pr_acc = pr.pr_acc AND pr.pr_T = 1);"
+queries["peptides"] = "SELECT DISTINCT p.pep_id, p.pep_seq \
+                        FROM peptides AS p, pep_sn AS r \
+                        WHERE p.pep_id = r.pep_id\
+                        AND p.pep_T = 1;"
 
 queries["atrox_peptides"] = "SELECT DISTINCT p.pep_id, p.pep_seq \
                         FROM peptides AS p, pep_at AS r \
