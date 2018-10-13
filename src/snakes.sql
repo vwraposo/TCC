@@ -35,6 +35,10 @@ INSERT INTO snakes(sn_sp, sn_ge) VALUES ('atrox', 'Bothrops');
 CREATE TABLE peptides (
   pep_id serial,
   pep_seq varchar(100) not NULL, 
+  pep_T integer DEFAULT 0, 
+  pep_WGA integer DEFAULT 0, 
+  pep_ConA integer DEFAULT 0, 
+  pep_PNA integer DEFAULT 0, 
   CONSTRAINT pk_pep PRIMARY KEY (pep_id),
   CONSTRAINT sk_pep UNIQUE (pep_seq)
 );
