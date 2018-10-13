@@ -62,7 +62,7 @@ for file in os.listdir(directory):
                 try:
                     cur.execute("SELECT pep_id FROM peptides WHERE pep_seq = '{0}';".format(peptide))
                     if (cur.rowcount == 0):
-                        cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
+                        cur.execute("INSERT INTO peptides(pep_seq, pep_T) VALUES ('{0}', 1)\
                             ON CONFLICT DO NOTHING RETURNING pep_id;".format(peptide))
                     pid = cur.fetchone()[0]
                     cur.execute("INSERT INTO pep_sn(pep_id, sn_sp) VALUES ('{0}', '{1}')\
@@ -139,9 +139,12 @@ for file in os.listdir(directory):
                 try:
                     cur.execute("SELECT pep_id FROM peptides WHERE pep_seq = '{0}';".format(peptide))
                     if (cur.rowcount == 0):
-                        cur.execute("INSERT INTO peptides(pep_seq) VALUES ('{0}')\
-                            ON CONFLICT DO NOTHING RETURNING pep_id;".format(peptide))
-                    pid = cur.fetchone()[0]
+                        cur.execute("INSERT INTO peptides(pep_seq, pep_{0}) VALUES ('{1}', '{2}')\
+                            ON CONFLICT DO NOTHING RETURNING pep_id;".format(lectin, peptide, 1))
+                        pid = cur.fetchone()[0]
+                    else:
+                        pid = cur.fetchone()[0]
+                        cur.execute("UPDATE peptides SET pep_{0} = 1 WHERE pep_id = '{1}';".format(lectin, pid))
                     cur.execute("INSERT INTO pep_sn(pep_id, sn_sp) VALUES ('{0}', '{1}')\
                             ON CONFLICT DO NOTHING;".format(pid, species))
                     cur.execute("INSERT INTO pep_pr(pep_id, pr_acc) VALUES ('{0}', '{1}') \
