@@ -30,7 +30,7 @@ def create_report(file1, file2):
         ids[-1] = ids[-1][:-1]
 
     try:
-        conn = psycopg2.connect(dbname="testdb",  user="fox", password="senha")
+        conn = psycopg2.connect(dbname="snakesdb",  user="fox", password="senha")
     except:
         print("Error: It was not possible to connect to the database")
         sys.exit(1)
