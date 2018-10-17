@@ -80,9 +80,9 @@ def getStandard(chset):
 # Returns the proteic data from the database in a standard form 
 def _getProteins(typ):
     if typ == 'T':
-        where = 'WHERE pr.pr_acc = r.pr_acc AND pr.pr_T = 1' 
+        where = 'AND pr.pr_T = 1' 
     elif typ == 'L':
-        where = 'WHERE pr.pr_acc = r.pr_acc AND (pr.pr_WGA = 1 OR pr.pr_ConA = 1 OR pr.pr_PNA = 1)'
+        where = 'AND (pr.pr_WGA = 1 OR pr.pr_ConA = 1 OR pr.pr_PNA = 1)'
     elif typ == 'TL':
         where = ''
     else:
@@ -97,7 +97,7 @@ def _getProteins(typ):
 
     cur = conn.cursor()
     try:
-        cur.execute("SELECT DISTINCT r.pr_acc FROM pr_sn AS r, proteins AS pr {0};".format(where))
+        cur.execute("SELECT DISTINCT r.pr_acc FROM pr_sn AS r, proteins AS pr WHERE pr.pr_acc = r.pr_acc {0};".format(where))
         if cur.rowcount == 0:
             print("Error: there are not proteins in the database.")
             raise Exception
