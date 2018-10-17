@@ -108,14 +108,14 @@ records = getPeptides("R")
 for rec in records:
     nwR.add(rec, 'peptides', 'Standard', "".join(records[rec]))
 
-nwR.writeFile("../input/extras/atrox2/pep_Rep.nex")
+nwR.writeFile("../input/extras/atrox/pep_Rep.nex")
 
 nw = NexusWriter() 
 records = getPeptides()
 for rec in records:
     nw.add(rec, 'peptides', 'Standard', "".join(records[rec]))
 
-nw.writeFile("../input/extras/atrox2/pep.nex")
+nw.writeFile("../input/extras/atrox/pep.nex")
 
 cur.close()
 conn.close()

@@ -1,5 +1,6 @@
 {
   "test_align.py": true,
+  "test_atrox_middleware.py": true,
   "test_lapointe.py": true,
   "test_middleware.py::test_getProtein": true,
   "test_nexus.py::test_GenParams": true

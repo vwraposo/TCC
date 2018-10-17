@@ -1,4 +1,18 @@
 [
-  "test_atrox_middleware.py::test_getPeptidesData",
-  "test_atrox_middleware.py::test_getPeptidesTypes"
+  "test_CADM.py::test_diffNtax",
+  "test_CADM.py::test_modes",
+  "test_middleware.py::test_answer",
+  "test_middleware.py::test_error",
+  "test_middleware.py::test_getProteinError",
+  "test_middleware.py::test_getProteins",
+  "test_middleware.py::test_getPeptides",
+  "test_middleware.py::test_getGlycans",
+  "test_nexus.py::test_add",
+  "test_nexus.py::test_GenParams",
+  "test_nexus.py::test_addError",
+  "test_nexus.py::test_sameLen",
+  "test_nexus.py::test_makeMatrix",
+  "test_nexus.py::test_makeFormat",
+  "test_nexus.py::test_makePartition",
+  "test_nexus.py::test_getSeqLen"
 ]
