@@ -1,6 +1,6 @@
 ##################################################################################
 ##                                                                              ##
-##   Module that will work as a middleware for the program that generates       ##
+##   Module that workds as a middleware for the program that generates          ##
 ## the NEXUS file, meaning when the user asks for a type of data the program    ##
 ## call this module to get the aligned sequences that will go to the NEXUS file ##
 ##                                                                              ##
@@ -8,15 +8,12 @@
 import psycopg2
 import sys
 import tempfile 
-from UF import UnionFind 
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import generic_dna, generic_protein
 from Bio.Align.Applications import ClustalOmegaCommandline
-from Bio.Blast.Applications import NcbiblastpCommandline
-from Bio.Blast import NCBIXML
-
+from pep_equiv import PepEquiv
 
 # Recieve a type (alias) of gene, then get the sequences from the database and returns the aligned sequences  
 def getAlignedSeq(alias):
@@ -145,10 +142,6 @@ def _getProteins(typ):
 
 # Returns the proteic data from the database in a binary form 
 def _getPeptides(typ=''):
-    MAX_DIFF = 2
-    MAX_HITS = 5
-    MIN_SCORE = 20 
-    MIN_EVALUE = 1e-05
 
     if typ == "T":
         where =  "WHERE pep_id IN (SELECT DISTINCT pe.pep_id \
@@ -178,42 +171,11 @@ def _getPeptides(typ=''):
         print("Rollback complete")
 
     peptides = [tup[0] for tup in cur]
-    n_pep = len(peptides)
 
-    # pep_id -> uf_id
-    dic = dict(zip(peptides, range(n_pep)))
+    equiv = PepEquiv(peptides, db)
 
-    # uf_id -> pep_id
-    dicI = dict(zip(range(n_pep), peptides))
-    
-    uf = UnionFind(n_pep)
-    
-    out_file = tempfile.NamedTemporaryFile()
-    blastp_cline = NcbiblastpCommandline(query="../data/blast/{0}.faa".format(db), db="../data/blast/db/{0}".format(db), evalue=MIN_EVALUE, threshold=MIN_SCORE, max_target_seqs=MAX_HITS, num_threads = 3, outfmt=5, out=out_file.name)
-    print("BLAST started....")
-    blastp_cline()
-    print("BLAST completed.")
-
-
-    result_handle = open(out_file.name)
-    blast_records = NCBIXML. parse(result_handle)
-    for blast_record in blast_records:
-        pid_t = int(blast_record.query)
-        len_t = blast_record.query_letters
-        for al in blast_record.alignments:
-            pid_r = int(al.title.split()[-1])
-            len_r = al.length
-            if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
-                if (pid_t not in dic): 
-                    print("Error: BLAST database not congruent with local database")
-                    sys.exit(1)
-                if (pid_r in dic):
-                    uf.union (dic[pid_t], dic[pid_r])
-                break
-
-
-    classes  = list(filter(lambda x: dic[x] == uf.find(dic[x]), peptides))
-
+   
+    classes = equiv.getClasses()
 
     try:
         cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
@@ -230,7 +192,7 @@ def _getPeptides(typ=''):
         if tup[1] not in records:
             records[tup[1]] = [str(0)] * len(classes)  
         
-        f = dicI[uf.find(dic[tup[0]])]
+        f = equiv.getRep(tup[0])
         records[tup[1]][classes.index(f)] = str(1) 
 
     ## Creating a file with the id of the class representative
@@ -245,7 +207,6 @@ def _getPeptides(typ=''):
             # f.write("{0} {1}\n".format(str(sn), ''.join(records[sn])))
         # f.write(";\nEND;")
 
-    out_file.close()
     cur.close()
     conn.close()
 
@@ -293,5 +254,3 @@ def _getGlycans():
     
 
     return records
-
-
