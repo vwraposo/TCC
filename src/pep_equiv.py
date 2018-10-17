@@ -10,6 +10,7 @@ from Bio.Blast.Applications import NcbiblastpCommandline
 from Bio.Blast import NCBIXML
 import tempfile 
 
+# Verificar Erros e fazer teste
 
 class PepEquiv:
   
@@ -64,8 +65,7 @@ class PepEquiv:
     def getRep(self, pep_id):
         return self.dicI[self.uf.find(self.dic[pep_id])]
 
-    def writeFile(self):
-        return
-
-
-
+    def writeFile(self, filename):
+        with open(filename, "w") as f: 
+            for pep in self.peptides:
+                f.write("{0}:{1}\n".format(pep, self.uf.find(self.dic[pep])))

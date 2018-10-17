@@ -195,6 +195,9 @@ def _getPeptides(typ=''):
         f = equiv.getRep(tup[0])
         records[tup[1]][classes.index(f)] = str(1) 
 
+    ## Creating file that encodes the equivalence class
+    # equiv.writeFile("../reports/supp_prot/class.txt")
+
     ## Creating a file with the id of the class representative
     # with  open("character_file.nex", "a") as f:
         # f.write("{0};\n".format(len(classes)))
@@ -254,3 +257,4 @@ def _getGlycans():
     
 
     return records
+
