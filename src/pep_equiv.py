@@ -13,8 +13,6 @@ import tempfile
 # Verificar Erros e fazer teste
 
 class PepEquiv:
-  
-
 
     def __init__ (self, peptides, db):
         self.peptides = peptides
