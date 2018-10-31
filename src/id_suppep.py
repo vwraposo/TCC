@@ -9,7 +9,7 @@ import os
 import re
 
 def similar (x, y):
-    eps = 0.05
+    eps = 0.01
     s = abs(float(x[1]) - float(y[1])) 
     return (s < eps)
 
