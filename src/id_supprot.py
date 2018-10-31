@@ -9,7 +9,7 @@ import os
 import re
 
 
-def idProteins(report, mn=1):
+def idProteins(report, mn=5):
     directory = "../reports/supp_prot/"
     classes = {}
     with open(directory + "class.txt") as f:
@@ -59,12 +59,12 @@ def idProteins(report, mn=1):
             f.write(pr + '\n')
 
 
-idProteins('../reports/supp_peptides/report_9v5.txt')
-idProteins('../reports/supp_peptides/report_10v9.txt')
-idProteins('../reports/supp_peptides/report_2v5.txt')
-idProteins('../reports/supp_peptides/report_6v5.txt')
-idProteins('../reports/supp_peptides/report_9v5.txt')
-idProteins('../reports/supp_peptides/report_9vneuwiedi.txt')
+idProteins('../reports/supp_peptides2/report_9v5.txt')
+idProteins('../reports/supp_peptides2/report_10v9.txt')
+idProteins('../reports/supp_peptides2/report_2v5.txt')
+idProteins('../reports/supp_peptides2/report_6v5.txt')
+idProteins('../reports/supp_peptides2/report_9v5.txt')
+idProteins('../reports/supp_peptides2/report_9vneuwiedi.txt')
 
 
 
