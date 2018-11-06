@@ -70,7 +70,7 @@ def getStandard(chset):
     elif chset == 'peptides':
         return _getPeptides('T')
     elif chset == 'all_peptides':
-        return _getPeptides()
+        return _getPeptides('TL')
     elif chset == 'glycans':
         return _getGlycans()
     else:
@@ -148,7 +148,7 @@ def _getPeptides(typ=''):
                     FROM pep_pr AS pe, proteins AS pr \
                     WHERE pe.pr_acc = pr.pr_acc AND pr.pr_T = 1)"
         db = "peptides"
-    else:
+    elif typ == "TL":
         where = ""
         db = "all_peptides"
 
@@ -177,8 +177,15 @@ def _getPeptides(typ=''):
    
     classes = equiv.getClasses()
 
+    if typ == "T":
+        where =  "AND r.pep_id IN (SELECT DISTINCT pe.pep_id \
+                    FROM pep_pr AS pe, proteins AS pr \
+                    WHERE pe.pr_acc = pr.pr_acc AND pr.pr_T = 1)"
+    elif typ == "TL":
+        where = ""
+
     try:
-        cur.execute("SELECT DISTINCT * FROM pep_sn {0};".format(where))
+        cur.execute("SELECT DISTINCT * FROM pep_sn AS r, peptides AS e WHERE e.pep_id = r.pep_id {0};".format(where))
         if cur.rowcount == 0:
             print("Eror: there are not peptides related to species in the database.")
             raise Exception
@@ -189,11 +196,15 @@ def _getPeptides(typ=''):
 
     records = dict()
     for tup in cur: 
+        print(tup)
         if tup[1] not in records:
             records[tup[1]] = [str(0)] * len(classes)  
         
         f = equiv.getRep(tup[0])
-        records[tup[1]][classes.index(f)] = str(1) 
+        summ = 1
+        if typ == 'TL':
+            summ = sum(tup[4:])
+        records[tup[1]][classes.index(f)] = str(summ)
 
     ## Creating file that encodes the equivalence class
     # equiv.writeFile("../reports/supp_prot/class.txt")
@@ -257,4 +268,5 @@ def _getGlycans():
     
 
     return records
+
 
