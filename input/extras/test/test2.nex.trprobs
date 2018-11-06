@@ -1,5 +1,5 @@
 #NEXUS
-[ID: 3392033807]
+[ID: 4514680029]
 [This file contains the trees that were found during the MCMC
 search, sorted by posterior probability. "p" indicates the
 posterior probability of the tree whereas "P" indicates the
@@ -14,5 +14,14 @@ begin trees;
     5 jararacussu,
     6 moojeni,
     7 neuwiedi;
-   tree tree_1 [p = 1.000, P = 1.000] = [&W 1.000000] ((6,5),((7,2),(4,3)),1);
+   tree tree_1 [p = 0.509, P = 0.509] = [&W 0.508699] (2,((7,(6,5)),(4,3)),1);
+   tree tree_2 [p = 0.350, P = 0.859] = [&W 0.349877] ((7,(6,5)),(2,(4,3)),1);
+   tree tree_3 [p = 0.136, P = 0.994] = [&W 0.135524] (((7,(6,5)),2),(4,3),1);
+   tree tree_4 [p = 0.005, P = 0.999] = [&W 0.004700] ((6,5),(7,(2,(4,3))),1);
+   tree tree_5 [p = 0.001, P = 1.000] = [&W 0.000800] ((6,5),((7,2),(4,3)),1);
+   tree tree_6 [p = 0.000, P = 1.000] = [&W 0.000267] ((6,5),(2,(7,(4,3))),1);
+   tree tree_7 [p = 0.000, P = 1.000] = [&W 0.000033] (((6,5),(7,2)),(4,3),1);
+   tree tree_8 [p = 0.000, P = 1.000] = [&W 0.000033] ((6,(7,5)),(2,(4,3)),1);
+   tree tree_9 [p = 0.000, P = 1.000] = [&W 0.000033] ((7,2),((6,5),(4,3)),1);
+   tree tree_10 [p = 0.000, P = 1.000] = [&W 0.000033] (2,((6,(7,5)),(4,3)),1);
 end;
