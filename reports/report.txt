@@ -16,9 +16,9 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.5419441
-Chi2      21.6777630
-Prob.perm  0.2500000
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.260000
 
 $nperm
 [1] 99
@@ -43,9 +43,9 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.5067114
-Chi2      20.2684564
-Prob.perm  0.3600000
+W          0.4942953
+Chi2      19.7718121
+Prob.perm  0.4400000
 
 $nperm
 [1] 99
@@ -70,9 +70,9 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.5203098
-Chi2      20.8123924
-Prob.perm  0.3200000
+W           0.505852
+Chi2       20.234079
+Prob.perm   0.390000
 
 $nperm
 [1] 99
@@ -89,7 +89,7 @@ Analysis of symmetric matrices
 
 Time to compute global test =
  
-0.015000
+0.013000
  
  sec
  
@@ -97,9 +97,36 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.5100671
-Chi2      20.4026846
-Prob.perm  0.3900000
+W          0.4949664
+Chi2      19.7986577
+Prob.perm  0.4700000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: all_peptides
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.014000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.6080151
+Chi2      24.3206054
+Prob.perm  0.1700000
 
 $nperm
 [1] 99
@@ -116,7 +143,7 @@ Analysis of symmetric matrices
 
 Time to compute global test =
  
-0.012000
+0.031000
  
  sec
  
@@ -124,9 +151,9 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.4537284
-Chi2      18.1491345
-Prob.perm  0.5500000
+W          0.4653795
+Chi2      18.6151798
+Prob.perm  0.5200000
 
 $nperm
 [1] 99
@@ -143,7 +170,7 @@ Analysis of symmetric matrices
 
 Time to compute global test =
  
-0.013000
+0.019000
  
  sec
  
@@ -151,9 +178,9 @@ Time to compute global test =
 
 $congruence_analysis
           Statistics
-W          0.5884073
-Chi2      23.5362917
-Prob.perm  0.2500000
+W          0.7927417
+Chi2      31.7096663
+Prob.perm  0.0400000
 
 $nperm
 [1] 99
