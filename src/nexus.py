@@ -1,6 +1,6 @@
 ##################################################################################
 ##                                                                              ##
-##   Module that has a Nexus file writer                                        ##
+##   Module that has a NEXUS file writer                                        ##
 ##                                                                              ##
 ##################################################################################
 
@@ -72,7 +72,7 @@ class NexusWriter:
         self.taxa.add(taxon)
         
         if (len(list(dic[charset].values())) > 0 and len(seq) != len(list(dic[charset].values())[0])):
-            print("Error: sequence of same charset with different lenghts")
+            print("Error: sequence of same charset with different lengths")
             raise(Exception)
         dic[charset][taxon] = seq
 
