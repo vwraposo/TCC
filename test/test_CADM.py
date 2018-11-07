@@ -6,7 +6,7 @@ import pytest
 
 def test_diffNtax() :
     with pytest.raises(Exception):
-        CADM("../test/t1.nex", "../test/t6.nex")
+        CADM("../test/t1.nex", "../test/t3.nex")
 
 def test_modes():
     with pytest.raises(Exception):

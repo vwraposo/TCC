@@ -1,7 +1,11 @@
 {
   "test_align.py": true,
   "test_atrox_middleware.py": true,
-  "test_lapointe.py": true,
-  "test_middleware.py::test_getProtein": true,
-  "test_nexus.py::test_GenParams": true
+  "test_atrox_middleware.py::test_getPeptidesData": true,
+  "test_atrox_middleware.py::test_getPeptidesTypes": true,
+  "test_lapointe.py::test_NISI": true,
+  "test_lapointe.py::test_SSD": true,
+  "test_lapointe.py::test_standardize": true,
+  "test_middleware.py::test_getPeptides": true,
+  "test_middleware.py::test_getProtein": true
 }

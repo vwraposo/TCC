@@ -32,10 +32,15 @@ def test_getProteins():
             assert (i == '0' or i == '1' or i == '2' or i == '3' or i == '4')
 
 def test_getPeptides():
-    records = mw._getPeptides()
+    records = mw._getPeptides('T')
     for rec in records:
         for i in records[rec]:
             assert (i == '0' or i == '1')
+            
+    records = mw._getPeptides('TL')
+     for rec in records:
+        for i in records[rec]:
+            assert (i == '0' or i == '1' or i == '2' or i == '3' 
 
 def test_getGlycans():
     records = mw._getGlycans()
