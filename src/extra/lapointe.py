@@ -167,7 +167,6 @@ class LL:
         a = getDecomposition(self.dm1)
         b = getDecomposition(self.dm2)
 
-        print(ll.NISI())
 
 
     
