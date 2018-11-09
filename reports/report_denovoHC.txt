@@ -1,0 +1,170 @@
+Report comparing topology using the CADM test of the resulting denovo trees with the tree obtained with the genomic data.
+------------------------------
+Target: 20
+../input/de_novo_HC/20/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.017000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.6662338
+Chi2      26.6493506
+Prob.perm  0.0900000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: 1
+../input/de_novo_HC/1/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.014000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.7292208
+Chi2      29.1688312
+Prob.perm  0.0200000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: 10
+../input/de_novo_HC/10/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.6662338
+Chi2      26.6493506
+Prob.perm  0.1000000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: total
+../input/de_novo_HC/total/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.6662338
+Chi2      26.6493506
+Prob.perm  0.1300000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: 2
+../input/de_novo_HC/2/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.013000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.7214286
+Chi2      28.8571429
+Prob.perm  0.0600000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
+Target: 5
+../input/de_novo_HC/5/peptides.nex.con.tre
+Analysis of symmetric matrices
+ 
+
+
+
+Time to compute global test =
+ 
+0.014000
+ 
+ sec
+ 
+
+
+$congruence_analysis
+          Statistics
+W          0.7207792
+Chi2      28.8311688
+Prob.perm  0.0500000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------
