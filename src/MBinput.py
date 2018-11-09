@@ -81,7 +81,16 @@ class CreateInput(cmd.Cmd):
                 if datatype == 'DNA' or datatype == 'Codon':
                     self.nwriter.add(rec.description.split()[2], chset, datatype, str(rec.seq))
                 else:
-                    self.nwriter.add(rec, chset, datatype, "".join(records[rec]))
+                    mx = 99950
+                    s = "".join(records[rec])
+                    if (len(s) <= mx): 
+                        self.nwriter.add(rec, chset, datatype, s)
+                    else:
+                        i = 1
+                        for it in range(0, len(s), mx):
+                            h = it + mx
+                            self.nwriter.add(rec, chset+str(i), datatype, s[it:h])
+                            i += 1
             except:
                 self.selected[chset] = False
                 return
