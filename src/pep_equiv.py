@@ -27,12 +27,10 @@ class PepEquiv:
         self.MAX_HITS = 5
         self.MIN_EVALUE = 1e-5
 
-    def setParams(diff = 2, hits = 5, evalue= 1e-5):
+    def setParams(self, diff = 2, hits = 5, evalue = 1e-5):
         self.MAX_DIFF = diff
         self.MAX_HITS = hits
         self.MIN_EVALUE = evalue
-
-
 
     def run(self, db):
         out_file = tempfile.NamedTemporaryFile()
