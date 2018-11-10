@@ -23,7 +23,7 @@ Begin data;
     ;
 End;
 begin mrbayes;
-    	charset peptides1 = 1-185081;
+    	charset peptides = 1-185081;
 	partition part = 1: peptides;
 
         set partition = part;
