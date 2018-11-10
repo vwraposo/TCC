@@ -1,26 +1,109 @@
 #NEXUS
-[ID: 3236201316]
 begin taxa;
 	dimensions ntax=7;
 	taxlabels
-		cotiara
-		erythromelas
-		insularis
-		jararaca
-		jararacussu
-		moojeni
-		neuwiedi
-		;
+	cotiara[&!name="B. cotiara"]
+	erythromelas[&!name="B. erythromelas"]
+	insularis[&!name="B. insularis"]
+	jararaca[&!name="B. jararaca"]
+	jararacussu[&!name="B. jararacussu"]
+	moojeni[&!name="B. moojeni"]
+	neuwiedi[&!name="B. neuwiedi"]
+;
 end;
+
 begin trees;
-	translate
-		1	cotiara,
-		2	erythromelas,
-		3	insularis,
-		4	jararaca,
-		5	jararacussu,
-		6	moojeni,
-		7	neuwiedi
-		;
-   tree con_50_majrule = [&U] (1[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.433848e-01[&length_mean=3.50794531e-01,length_median=1.43384800e-01,length_95%HPD={3.60467900e-02,1.38125900e+00}],((5[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.190217e-01[&length_mean=2.91861459e-01,length_median=1.19021700e-01,length_95%HPD={2.99040500e-02,1.15175100e+00}],6[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.086529e-01[&length_mean=2.66017905e-01,length_median=1.08652900e-01,length_95%HPD={2.66680800e-02,1.04444800e+00}])[&prob=6.52289847e-01,prob_stddev=8.95608882e-03,prob_range={6.45956936e-01,6.58622758e-01},prob(percent)="65",prob+-sd="65+-1"]:6.141886e-03[&length_mean=1.54064644e-02,length_median=6.14188600e-03,length_95%HPD={4.65034200e-04,6.13385700e-02}],7[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.275075e-01[&length_mean=3.11892421e-01,length_median=1.27507500e-01,length_95%HPD={3.16290900e-02,1.21578800e+00}])[&prob=9.98666756e-01,prob_stddev=4.71373096e-04,prob_range={9.98333444e-01,9.99000067e-01},prob(percent)="100",prob+-sd="100+-0"]:6.021217e-03[&length_mean=1.50847089e-02,length_median=6.02121700e-03,length_95%HPD={1.05861500e-03,5.93381000e-02}],(2[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.246490e-01[&length_mean=3.04308716e-01,length_median=1.24649000e-01,length_95%HPD={3.05458000e-02,1.19458100e+00}],(3[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.020531e-01[&length_mean=2.50232002e-01,length_median=1.02053100e-01,length_95%HPD={2.50178100e-02,9.84155400e-01}],4[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:9.441873e-02[&length_mean=2.31251473e-01,length_median=9.44187300e-02,length_95%HPD={2.34327800e-02,9.00211800e-01}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.798596e-02[&length_mean=4.43841681e-02,length_median=1.79859600e-02,length_95%HPD={3.60286800e-03,1.72699200e-01}])[&prob=9.95733618e-01,prob_stddev=1.88549238e-04,prob_range={9.95600293e-01,9.95866942e-01},prob(percent)="100",prob+-sd="100+-0"]:3.786768e-03[&length_mean=9.68155254e-03,length_median=3.78676800e-03,length_95%HPD={3.32032200e-04,3.80507800e-02}]);
+	tree con_50_majrule = [&U] (cotiara[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.350794531,length_median=0.1433848,length_95%HPD={0.03604679,1.381259}]:0.143385,((jararacussu[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.291861459,length_median=0.1190217,length_95%HPD={0.02990405,1.151751}]:0.119022,moojeni[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.266017905,length_median=0.1086529,length_95%HPD={0.02666808,1.044448}]:0.108653)[&prob=0.652289847,prob_stddev=0.00895608882,prob_range={0.645956936,0.658622758},prob(percent)="65",prob+-sd="65+-1",length_mean=0.0154064644,length_median=0.006141886,length_95%HPD={4.650342E-4,0.06133857}]:0.006142,neuwiedi[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.311892421,length_median=0.1275075,length_95%HPD={0.03162909,1.215788}]:0.127508)[&prob=0.998666756,prob_stddev=4.71373096E-4,prob_range={0.998333444,0.999000067},prob(percent)="100",prob+-sd="100+-0",length_mean=0.0150847089,length_median=0.006021217,length_95%HPD={0.001058615,0.0593381}]:0.006021,(erythromelas[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.304308716,length_median=0.124649,length_95%HPD={0.0305458,1.194581}]:0.124649,(insularis[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.250232002,length_median=0.1020531,length_95%HPD={0.02501781,0.9841554}]:0.102053,jararaca[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.231251473,length_median=0.09441873,length_95%HPD={0.02343278,0.9002118}]:0.094419)[&prob=1.0,prob_stddev=0.0,prob_range={1.0,1.0},prob(percent)="100",prob+-sd="100+-0",length_mean=0.0443841681,length_median=0.01798596,length_95%HPD={0.003602868,0.1726992}]:0.017986)[&prob=0.995733618,prob_stddev=1.88549238E-4,prob_range={0.995600293,0.995866942},prob(percent)="100",prob+-sd="100+-0",length_mean=0.00968155254,length_median=0.003786768,length_95%HPD={3.320322E-4,0.03805078}]:0.003787);
 end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=2.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="Al Bayan";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="length_mean";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute="length_95%HPD";
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="prob";
+	set nodeLabels.fontName="Al Bayan";
+	set nodeLabels.fontSize=18;
+	set nodeLabels.fontStyle=1;
+	set nodeLabels.isShown=true;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=16.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=2.0;
+	set scaleBar.scaleRange=0.02;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="Al Bayan";
+	set tipLabels.fontSize=18;
+	set tipLabels.fontStyle=3;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+
