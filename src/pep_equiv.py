@@ -14,7 +14,7 @@ import tempfile
 
 class PepEquiv:
 
-    def __init__ (self, peptides, db):
+    def __init__ (self, peptides):
         self.peptides = peptides
         self.n_pep = len(peptides)
         self.uf = UnionFind(self.n_pep)
@@ -23,16 +23,20 @@ class PepEquiv:
         # uf_id -> pep_id
         self.dicI = dict(zip(range(self.n_pep), peptides))
         self.classes = []
-        self._run(db)
+        self.MAX_DIFF = 2
+        self.MAX_HITS = 5
+        self.MIN_EVALUE = 1e-5
 
-    def _run(self, db):
-        MAX_DIFF = 2
-        MAX_HITS = 5
-        MIN_SCORE = 20 
-        MIN_EVALUE = 1e-05
+    def setParams(diff = 2, hits = 5, evalue= 1e-5):
+        self.MAX_DIFF = diff
+        self.MAX_HITS = hits
+        self.MIN_EVALUE = evalue
 
+
+
+    def run(self, db):
         out_file = tempfile.NamedTemporaryFile()
-        blastp_cline = NcbiblastpCommandline(query="../data/blast/{0}.faa".format(db), db="../data/blast/db/{0}".format(db), evalue=MIN_EVALUE, threshold=MIN_SCORE, max_target_seqs=MAX_HITS, num_threads = 3, outfmt=5, out=out_file.name)
+        blastp_cline = NcbiblastpCommandline(query="../data/blast/{0}.faa".format(db), db="../data/blast/db/{0}".format(db), evalue= self.MIN_EVALUE, num_threads = 4, outfmt=5, out=out_file.name)
         print("BLAST started....")
         blastp_cline()
         print("BLAST completed.")
@@ -46,9 +50,9 @@ class PepEquiv:
             for al in blast_record.alignments:
                 pid_r = int(al.title.split()[-1])
                 len_r = al.length
-                if abs(len_t - len_r) <= MAX_DIFF and pid_t != pid_r:
+                if abs(len_t - len_r) <= self.MAX_DIFF and pid_t != pid_r:
                     if (pid_t not in self.dic): 
-                        print("Error: BLAST database not congruent with local database")
+                        print("Error: BLAST database not congruent with local database: " + str(pid_t))
                         sys.exit(1)
                     if (pid_r in self.dic):
                         self.uf.union (self.dic[pid_t], self.dic[pid_r])
