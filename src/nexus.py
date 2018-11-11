@@ -42,7 +42,6 @@ class NexusWriter:
         self.dna = collections.OrderedDict() 
         self.codon = collections.OrderedDict()
         self.standard = collections.OrderedDict() 
-        self.binary = collections.OrderedDict() 
         self._partition = dict()
         self.taxa = set()
         self.tchar = 0
@@ -60,8 +59,6 @@ class NexusWriter:
             dic = self.codon
         elif datatype == 'Standard':
             dic = self.standard
-        elif datatype == 'Binary':
-            dic = self.binary
         else:
             print("Error: datatype not defined")
             raise(Exception)
@@ -112,7 +109,7 @@ class NexusWriter:
     # Function to convert the data matrix into string
     def _makeMatrix (self):
         m = []
-        for dic in [self.dna, self.codon, self.standard, self.binary]:
+        for dic in [self.dna, self.codon, self.standard]:
             for c in dic: 
                 for taxon in sorted(dic[c]):
                     m.append('\t' + taxon + ' ' + dic[c][taxon])
@@ -124,8 +121,8 @@ class NexusWriter:
         f = dict()
         beg = 1
         end = 0
-        dics = [self.dna, self.codon, self.standard, self.binary]
-        names = ['DNA', 'DNA', 'Standard', 'Binary']
+        dics = [self.dna, self.codon, self.standard]
+        names = ['DNA', 'DNA', 'Standard']
         for i in range(len(dics)):
             if len(dics[i]) >= 1:
                 for ch in dics[i]:
@@ -149,7 +146,7 @@ class NexusWriter:
         beg = 1
         end = 0
         p_id = 1
-        for dic, name in zip([self.dna, self.codon, self.standard, self.binary], ['dna', 'codon', 'standard', 'binary']):
+        for dic, name in zip([self.dna, self.codon, self.standard], ['dna', 'codon', 'standard']):
             self._partition[name] = []
             for cset in dic:
                 end += self._getSeqLen(cset, dic) 

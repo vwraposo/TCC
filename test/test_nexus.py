@@ -9,13 +9,11 @@ def test_add ():
    n.add ('T2', 'c2', 'DNA', 'AGC')
    n.add ('T1', 'c3', 'Codon', '-GC')
    n.add ('T1', 'c4', 'Standard', '047')
-   n.add ('T1', 'c5', 'Binary', '010')
    assert len(n.dna) == 2
    assert len(n.codon) == 1
    assert len(n.standard) == 1
-   assert len(n.binary) == 1
    assert len(n.taxa) == 2
-   assert n.tchar == 15 
+   assert n.tchar == 12
 
 
 def test_GenParams():
@@ -37,10 +35,6 @@ def test_addError():
         n.add ('T1', 'c1', 'Codon', 'A12345')
     with pytest.raises(Exception):
         n.add ('T1', 'c1', 'Standard', '123ABC45')
-    with pytest.raises(Exception):
-        n.add ('T1', 'c1', 'Binary', '12345')
-    with pytest.raises(Exception):
-        n.add ('T1', 'c1', 'Binary', 'ADVKLD')
 
 def test_sameLen ():
     n = NexusWriter ()
