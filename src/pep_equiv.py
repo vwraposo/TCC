@@ -10,8 +10,6 @@ from Bio.Blast.Applications import NcbiblastpCommandline
 from Bio.Blast import NCBIXML
 import tempfile 
 
-# Verificar Erros e fazer teste
-
 class PepEquiv:
 
     def __init__ (self, peptides):
